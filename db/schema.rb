@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_05_012108) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_05_012706) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -30,6 +30,16 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_012108) do
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.text "body"
+    t.bigint "user_id", null: false
+    t.bigint "message_parent_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message_parent_id"], name: "index_messages_on_message_parent_id"
+    t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -73,6 +83,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_05_012108) do
   add_foreign_key "followers", "users", column: "follower_user_id"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "messages", "messages", column: "message_parent_id"
+  add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "routines", "users"
   add_foreign_key "series", "routines"
