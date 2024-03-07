@@ -55,8 +55,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_06_013400) do
   end
 
   create_table "followers", force: :cascade do |t|
-    t.bigint "user_id"
-    t.bigint "follower_user_id"
+    t.bigint "user_id", null: false
+    t.bigint "follower_user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["follower_user_id"], name: "index_followers_on_follower_user_id"
