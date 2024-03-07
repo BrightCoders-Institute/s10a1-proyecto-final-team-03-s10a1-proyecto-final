@@ -1,15 +1,15 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :create]
   def new
     @post = Post.new
   end
 
   def create
-    @post = User.new(post_params)
+    @post = current_user.posts.build(post_params)
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user_url(@post), notice: "Post was successfully created." }
-        format.json { render :show, status: :created, location: @post }
+        redirect_to new_post_path
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.all
+    @posts = Post.user_post(current_user)
   end
 
   def edit
@@ -48,11 +48,11 @@ class PostsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @user = Post.find(params[:id])
+      @user = Post.user_post(current_user).find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:body, :user_id, :comment_number, :post_image)
+      params.require(:post).permit(:body)
     end
 end
