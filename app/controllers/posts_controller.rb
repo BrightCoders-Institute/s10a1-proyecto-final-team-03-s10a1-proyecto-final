@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
     respond_to do |format|
       if @post.save
-        format.html { redirect_to root_path, notice: 'Post creado exitosamente.' }
+        format.html { redirect_to root_path, notice: 'Post created.' }
         format.json { render :show, status: :created, location: @post }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -28,7 +28,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to root_path, notice: "Post was successfully updated." }
+        format.html { redirect_to root_path, notice: 'Post was successfully updated.' }
         format.json { render :show, status: :ok, location: @post }
       else
         format.html { render :edit, status: :unprocessable_entity }
