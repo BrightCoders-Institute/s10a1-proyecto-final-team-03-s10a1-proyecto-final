@@ -26,7 +26,6 @@ Rails.application.configure do
   # Store files on Amazon S3.
   config.active_storage.service = :amazon
 
-
   # Compress CSS using a preprocessor.
   # config.assets.css_compressor = :sass
 
