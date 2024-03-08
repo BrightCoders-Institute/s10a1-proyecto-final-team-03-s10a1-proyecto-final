@@ -1,12 +1,1 @@
-<%= form_with(model: @post) do |form| %>
-
-  <div>
-    <%= form.label :body, style: "display: block" %>
-    <%= form.text_field :body %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-
-<% end %>
+<%= render 'form', event: @event, title: 'New post' %>
