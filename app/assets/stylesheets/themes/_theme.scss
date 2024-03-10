@@ -1,0 +1,26 @@
+$main-color-light: #FEFCE8;
+$secondary-color-light: #EFEFEF;
+$tertiary-color-light: #D9D9D9;
+$color-light: #000;
+
+$main-color-dark: #34435E;
+$secondary-color-dark: #EFEFEF;
+$tertiary-color-dark: #595959;
+$color-dark: #FFF;
+
+$themes: (
+  light: (
+    backgroundColor-main: $main-color-light,
+    backgroundColor-secondary: $secondary-color-light,
+    backgroundColor-tertiary: $tertiary-color-light,
+    color: darken($color-dark, 10%),
+    colorInverted: lighten($color-light, 10%),
+  ),
+  dark: (
+    backgroundColor-main: $main-color-dark,
+    backgroundColor-secondary: $secondary-color-dark,
+    backgroundColor-tertiary: $tertiary-color-dark,
+    color: darken($color-light, 10%),
+    colorInverted: darken($color-dark, 10%),
+  ),
+);

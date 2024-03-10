@@ -1,0 +1,25 @@
+.container footer {
+  padding: 1rem;
+
+  @include themify {
+    background-color: theme('colorInverted');
+  }
+
+  a {
+    margin: auto;
+
+    i {
+      @include themify {
+        color: theme('color');
+      }
+    }
+  }
+
+  .current-user {
+    border-radius: 50%;
+
+    @include themify {
+      background-color: theme('color');
+    }
+  }
+}

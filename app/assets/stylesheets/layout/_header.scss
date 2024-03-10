@@ -1,0 +1,26 @@
+.container header {
+  box-shadow: 0 10px $shadow-light;
+  flex-direction: column;
+  padding: 1rem 0;
+}
+
+.container header > div:first-child {
+  align-items: center;
+  padding-right: 1rem;
+
+  img {
+    height: 4rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+  }
+
+  i {
+    margin-left: auto;
+
+    @include themify {
+      color: theme('textColor');
+    }
+  }
+}
