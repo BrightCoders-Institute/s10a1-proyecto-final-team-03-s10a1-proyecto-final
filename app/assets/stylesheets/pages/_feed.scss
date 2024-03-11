@@ -10,8 +10,9 @@
 }
 
 .histories {
+  height: 5rem;
+  margin: 1rem 1rem 0;
   overflow: auto;
-  margin: 0 1rem;
 
   &::-webkit-scrollbar {
     display: none;
@@ -22,10 +23,10 @@
   border-radius: 50%;
   border: $border;
   flex-direction: column;
-  margin: 8px 4px;
+  margin: 0 4px;
 
   img {
-    height: 3rem;
+    height: 100%;
   }
 
   @include themify {
