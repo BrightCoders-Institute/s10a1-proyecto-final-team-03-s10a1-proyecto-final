@@ -15,6 +15,15 @@
         <div class="post-body">
           <%=post.body%>
         </div>
+        <div class="post-images">
+          <% if post.images.attached? %>
+            <% post.images.each do |image| %>
+              <div>
+                <%= image_tag image, width:300 %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
         <div class="post-footer">
           <div class="actions">
             <i class="bi bi-heart-fill"></i>
