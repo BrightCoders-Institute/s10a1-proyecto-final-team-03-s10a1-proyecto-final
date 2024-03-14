@@ -1,3 +1,5 @@
+<%= link_to "Sign Out", destroy_user_session_path %>
+
 <div class="posts">
   <% @posts.each do |post| %>
     <%= link_to post_path(post.id) do%>
