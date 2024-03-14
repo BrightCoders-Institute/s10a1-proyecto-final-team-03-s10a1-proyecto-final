@@ -28,8 +28,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to root_path, notice: 'Post was successfully updated.' }
-        format.json { render :show, status: :ok, location: @post }
+        update_status(format)
       else
         format.html { render :edit, status: :unprocessable_entity }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -55,6 +54,13 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:body)
+    params.require(:post).permit(:body, images: [], images_to_remove: [])
+  end
+
+  def update_status(format)
+    @post.remove_images if @post.persisted? && post_params[:images_to_remove].present?
+
+    format.html { redirect_to root_path, notice: 'Post was successfully updated.' }
+    format.json { render :show, status: :ok, location: @post }
   end
 end
