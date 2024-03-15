@@ -6,7 +6,6 @@ class Post < ApplicationRecord
   has_many_attached :images
 
   validates :body, presence: true
-  validate :validate_at_least_one_image_attached
   validate :validate_image_content_type
 
   attr_accessor :images_to_remove
