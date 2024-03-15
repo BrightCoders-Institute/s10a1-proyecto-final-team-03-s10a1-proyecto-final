@@ -1,0 +1,21 @@
+$font-color-light: #000000;
+$font-color-dark: #FFFFFF;
+
+$font-poppins: 'Poppins', sans-serif;
+$font-metal: 'Black Ops One', sans-serif;
+
+h1 {
+  font-family: $font-metal;
+  font-size: 3rem;
+  font-weight: 300;
+}
+
+h2, h3, h4, h5, h6, p, a, i, div {
+  font-family: $font-poppins;
+}
+
+h1, h2, h3, h4, h5, h6, p, a, i, div {
+  @include themify {
+    color: theme('colorInverted');
+  }
+}

@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+
+  @include themify {
+    background-color: theme('backgroundColor-main');
+  }
+}
+
+.histories {
+  height: $avatar-size + 2rem;
+  margin: 1rem 1rem 0;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.histories .history {
+  flex-direction: column;
+  height: $avatar-size;
+  margin: auto 4px;
+  width: $avatar-size;
+  
+  img {
+    border-radius: 50%;
+    
+    @include themify {
+      border: 1px solid theme('colorInverted');
+    }
+  }
+
+}
