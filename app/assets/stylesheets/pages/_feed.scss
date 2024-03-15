@@ -10,7 +10,7 @@
 }
 
 .histories {
-  height: 5rem;
+  height: $avatar-size + 2rem;
   margin: 1rem 1rem 0;
   overflow: auto;
 
@@ -19,17 +19,18 @@
   }
 }
 
-.histories .history{
-  border-radius: 50%;
-  border: $border;
+.histories .history {
   flex-direction: column;
-  margin: 0 4px;
-
+  height: $avatar-size;
+  margin: auto 4px;
+  width: $avatar-size;
+  
   img {
-    height: 100%;
+    border-radius: 50%;
+    
+    @include themify {
+      border: 1px solid theme('colorInverted');
+    }
   }
 
-  @include themify {
-    background-color: theme('color');
-  }
 }

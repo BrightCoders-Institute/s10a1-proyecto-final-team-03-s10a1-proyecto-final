@@ -6,20 +6,28 @@
   }
 
   a {
+    display: flex;
     margin: auto;
 
     i {
+      font-size: 2.5rem;
+
       @include themify {
         color: theme('color');
       }
     }
   }
 
-  .current-user {
-    border-radius: 50%;
-
-    @include themify {
-      background-color: theme('color');
+  .current-user {    
+    img {
+      border-radius: 50%;
+      height: $avatar-size;
+      width: $avatar-size;
+      
+      @include themify {
+        border: 1px solid theme('color');
+      }
     }
+
   }
 }
