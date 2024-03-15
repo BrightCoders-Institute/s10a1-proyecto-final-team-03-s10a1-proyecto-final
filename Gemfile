@@ -80,8 +80,6 @@ gem 'image_processing', '>= 1.2'
 
 gem 'dotenv', groups: %i[development test]
 
-gem 'jquery-rails'
-gem 'jquery-ui-rails'
 gem 'omniauth'
 gem 'omniauth-google-oauth2'
 gem 'omniauth-rails_csrf_protection', '~> 1.0'
