@@ -1,0 +1,39 @@
+<%= link_to "Sign Out", destroy_user_session_path %>
+
+<div class="posts">
+  <% @posts.each do |post| %>
+    <%= link_to post_path(post.id) do%>
+      <div class="post">
+        <div class="post-header">
+          <div class="user">
+            <%= image_tag('default-light.png') %>
+            <div>
+              <h2>John Doe</h2>
+              <p>1 hour ago</p>
+            </div>
+          </div>
+          <i class="bi bi-three-dots"></i>
+        </div>
+        <div class="post-body">
+          <%=post.body%>
+        </div>
+        <div class="post-images">
+          <% if post.images.attached? %>
+            <% post.images.each do |image| %>
+              <div>
+                <%= image_tag image, width:300 %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="post-footer">
+          <div class="actions">
+            <i class="bi bi-heart-fill"></i>
+            <i class="bi bi-chat-fill"></i>
+            <i class="bi bi-share-fill"></i>
+          </div>
+        </div>
+      </div>
+    <%end%>
+  <% end %>
+</div>

@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+body > * {
+  margin: 0;
+  padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+div,
+header,
+footer {
+  display: flex;
+}
+
+img {
+  user-select: none;
+}

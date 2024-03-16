@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+
+.wrapper {
+
+    background: #D9D9D9;
+    border-radius: 30px;
+    color: #000000;
+    margin: auto;
+    width: 75%;
+    height: 55%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    }
+    
+
+    .wrapper h2{
+        font-size: 36px;
+        text-align: right;
+        } 
+        
+.wrapper .remember-forgot{
+    font-size: 14.5px;
+    justify-content: space-between;
+    align-items: center;
+    label {
+        margin-right: auto;
+        padding: 4px;
+    }
+}
+
+
+.wrapper .register-link{
+    font-size: 14.5px;
+    margin: 20px 0 15px;
+    text-align: center;
+}
+
+.register-link p a {
+    color: #000000;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-link p a:hover {
+    text-decoration: underline;
+}
+
+.signuplabel{
+    margin: 0 40px 0 40px;
+
+}
+
+.logo{
+    display: grid;
+    
+    place-items: center;
+    
+    h1 {
+        font-family: 'Black Ops One', sans-serif;
+        font-weight: 100;
+        
+    }
+    
+}
+
+.links {
+    flex-direction: column;
+
+    &__devise {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+}
+
+.new_user {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    padding: 5%;
+}
+
+@include desktop-lg{
+
+    .logo{
+        display: grid;
+        
+        place-items: center;
+        
+        h1 {
+            font-family: 'Black Ops One', sans-serif;
+            font-weight: 100;
+            
+        }
+        
+    }
+
+    .wrapper {
+        
+        background: #D9D9D9;
+        border-radius: 10px;
+        color: #000000;
+        padding: 80px 20px ;
+    }
+    
+    .wrapper h2{
+        font-size: 36px;
+        text-align: center;
+    } 
+    
+    .wrapper .remember-forgot{
+        display: flex;
+        font-size: 14.5px;
+        justify-content: space-between;
+        margin: -8px 0 8px;
+    }
+    
+    .remember-forgot label, check_box{
+        
+        accent-color: #000000;
+        margin: 10px 220px 10px 10px;
+    
+    }
+    
+    
+
+    
+    
+    
+    .wrapper .register-link{
+        font-size: 14.5px;
+        margin: 20px 0 15px;
+        text-align: center;
+    }
+    
+    .register-link p a {
+        color: #000000;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    
+    .register-link p a:hover {
+        text-decoration: underline;
+    }
+    
+    .signuplabel{
+        margin: 0 40px 0 40px;
+    
+    }
+}

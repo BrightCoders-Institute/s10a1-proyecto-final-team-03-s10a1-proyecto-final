@@ -1,0 +1,11 @@
+<h1>Publicación de <%= current_user.email %></h1>
+<h2><%=@post.body%></h2>
+<div class="post-images">
+    <% if @post.images.attached? %>
+    <% @post.images.each do |image| %>
+        <div>
+        <%= image_tag image, width:250 %>
+        </div>
+    <% end %>
+    <% end %>
+</div>

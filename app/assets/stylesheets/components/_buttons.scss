@@ -1,0 +1,69 @@
+.btn{
+    
+    align-items: center;
+    background: #fff;
+    border-radius: 40px;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    height: 40px;
+    margin: 0 10px 20px 30px;
+    outline: none;
+    width: 80%;
+}
+
+.btn2{
+        background: #ffffff;
+        border-radius: 40px;
+        border: none;
+        color: #333;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        height: 40px;
+        margin: 0 10px 20px 30px;
+        outline: none;
+        width: 80%;
+    }
+    .center{
+        align-content: center;
+    }
+
+@include desktop-lg{
+
+    .btn{
+        
+        background: #ffffff;
+        border-radius: 40px;
+        border: none;
+        color: #333;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+        height: 40px;
+        margin: 0 10px 20px 30px;
+        outline: none;
+        width: 80%;
+
+        
+    }
+
+    .btn2{
+        background: #ffffff;
+        border-radius: 40px;
+        border: none;
+        color: #333;
+        cursor: pointer;
+        font-size: 16px;
+        font-weight: 600;
+
+        outline: none;
+        height: 40px;
+        width: 80%; 
+        }
+    .center{
+        align-content: center;
+    }
+}

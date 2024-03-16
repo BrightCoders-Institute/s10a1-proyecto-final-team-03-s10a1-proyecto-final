@@ -1,19 +1,31 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>S10a1ProyectoFinalTeam03S10a1ProyectoFinal</title>
+    <title>GYMRAT APP</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Black+Ops+One">
     <%= stylesheet_link_tag "main", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <%= yield %>
+  <body class="theme-light">
+    <div class="container">
+      <%= render 'layouts/header' if user_signed_in? %>
+
+      <% if notice %>
+        <p class="notice"><%= notice %></p>
+      <% elsif alert %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
+      
+      <%= yield %>
+
+      <%= render 'layouts/footer' if user_signed_in?%>
+    </div>
   </body>
 </html>
