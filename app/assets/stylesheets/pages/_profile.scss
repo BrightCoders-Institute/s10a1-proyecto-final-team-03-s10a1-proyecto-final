@@ -1,0 +1,95 @@
+.profile-header {
+  flex-direction: column;
+  padding: 1rem 0 0;
+
+  & > div:first-child {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__avatar {
+    border-radius: 50%;
+    padding-right: 1rem;
+
+    img {
+      border-radius: 50%;
+      height: $avatar-size * 2;
+      width: $avatar-size * 2;
+
+      @include themify {
+        border: 2px solid theme('colorInverted');
+      }
+    }
+  }
+
+  &__info {
+    flex-direction: column;
+
+    h2 {
+      font-size: 1.5rem;
+      padding: 4px 0;
+    }
+  }
+
+  .stats {
+    padding: 4px;
+
+    &__item {
+      flex-direction: column;
+      margin: auto;
+      text-align: center;
+    }
+  }
+
+  .actions {
+    justify-content: space-between;
+    padding: 4px 0;
+
+    button {
+      margin: 0.5rem 0;
+    }
+  }
+
+  .histories {
+    height: 4rem;
+    margin: 4px 1rem;
+  }
+}
+
+.profile-sections {
+  &__item {
+    width: 100%;
+
+    i {
+      margin: auto;
+    }
+
+    &.active, &:hover {
+      i {
+        @include themify {
+          color: theme('color');
+        }
+      }
+
+      @include themify {
+        background-color: theme('colorInverted');
+      }
+    }
+  }
+
+  span {
+    @include themify {
+      border-left: 1px solid theme('colorInverted');
+    }
+  }
+
+
+  @include themify {
+    border-bottom: 1px solid theme('colorInverted');
+    border-top: 1px solid theme('colorInverted');
+  }
+}
+
+.profile-main {
+  margin-bottom: auto;
+}
