@@ -11,11 +11,14 @@ class User < ApplicationRecord
 
   def self.from_omniauth(access_token)
     data = access_token.info
-    user = User.where(email: data['email']).first
+    user = User.find_or_initialize_by(email: data['email'])
 
-    user ||= User.create(name: data['name'],
-                         email: data['email'],
-                         password: Devise.friendly_token[0, 20])
+    unless user.persisted?
+      user.name = data['name']
+      user.password = Devise.friendly_token[0, 20]
+      user.skip_confirmation!
+      user.save
+    end
     user
   end
 end
