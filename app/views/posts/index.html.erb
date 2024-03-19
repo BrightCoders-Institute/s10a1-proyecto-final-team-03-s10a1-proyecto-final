@@ -1,1 +1,47 @@
-<%= render('cards') %>
+<div class="profile-header">
+  <div>
+    <div class="profile-header__avatar">
+      <%= image_tag current_user.image_profile %>
+    </div>
+    <div class="profile-header__info">
+      <h2><%= current_user.name %></h2>
+      <div class="stats">
+        <div class="stats__item">
+          <p>@post.user</p>
+          <p>Posts</p>
+        </div>
+        <div class="stats__item">
+          <p>2350</p>
+          <p>Followers</p>
+        </div>
+        <div class="stats__item">
+          <p>15</p>
+          <p>Following</p>
+        </div>
+      </div>
+      <div class="actions">
+        <%= link_to 'Configure profile', edit_user_registration_path, class: 'btn' %>
+        <%= link_to 'Share profile', new_post_path, class: 'btn' %>
+      </div>
+    </div>
+  </div>
+  <%= render 'main/histories' %>
+</div>
+<div class="profile-sections">
+  <div class="profile-sections__item">
+    <i class="bi bi-house-fill"></i>
+  </div>
+  <span></span>
+  <div class="profile-sections__item">
+    <i class="bi bi-camera-reels-fill"></i>
+  </div>
+  <span></span>
+  <div class="profile-sections__item">
+    <i class="bi bi-image-fill"></i>
+  </div>
+</div>
+<div class="profile-main">
+
+</div>
+
+<%= render 'cards' %>
