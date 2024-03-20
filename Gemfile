@@ -76,6 +76,8 @@ group :test do
   gem 'selenium-webdriver'
 end
 
+gem 'active_storage_validations'
+
 gem 'image_processing', '>= 1.2'
 
 gem 'dotenv', groups: %i[development test]

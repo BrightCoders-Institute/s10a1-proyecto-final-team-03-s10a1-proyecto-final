@@ -2,7 +2,7 @@
 
 <div class="posts">
   <% @posts.each do |post| %>
-    <%= link_to post_path(post.id) do%>
+    <%= link_to edit_post_path(post.id) do%>
       <div class="post">
         <div class="post-header">
           <div class="user">
