@@ -1,6 +1,4 @@
-.btn
-{
-    
+.btn {
     align-items: center;
     background:$secondary-color-light;
     border-radius: 40px;
@@ -14,9 +12,7 @@
     width: 80%;
 }
 
-.btn2
-{
-    
+.btn2 {
         background:$secondary-color-light;
         border-radius: 40px;
         border: none;
@@ -29,17 +25,14 @@
         width: 80%;
 
     }
-        .center
-    {
-
+        .center {
         align-content: center;
 
     }
 
-@include desktop-lg{
+@include desktop-lg {
 
-    .btn
-    {
+    .btn {
         background: $main-color-light;
         border-radius: 40px;
         border: none;
@@ -51,10 +44,9 @@
         outline: none;
         width: 80%;
 
-        
     }
 
-    .btn2{
+    .btn2 {
         background: $main-color-light;
         border-radius: 40px;
         border: none;
@@ -62,12 +54,14 @@
         cursor: pointer;
         font-size: 16px;
         font-weight: 600;
-
-        outline: none;
         height: 40px;
+        outline: none;
         width: 80%; 
-        }
-    .center{
+
+    }
+
+    .center {
         align-content: center;
+
     }
 }
