@@ -9,4 +9,7 @@ Rails.application.routes.draw do
   resources :users
   resources :posts
   resources :images
+  resources :posts do
+    resources :likes, only: %i[create destroy]
+  end
 end

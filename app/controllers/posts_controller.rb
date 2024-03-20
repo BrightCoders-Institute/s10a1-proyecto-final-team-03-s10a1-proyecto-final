@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.user_post(current_user)
+    @posts = Post.user_post(current_user).order(created_at: :desc)
   end
 
   def edit
