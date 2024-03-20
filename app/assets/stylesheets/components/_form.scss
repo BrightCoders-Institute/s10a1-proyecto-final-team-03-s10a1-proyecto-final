@@ -2,7 +2,6 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-
 }
 
 .wrapper {
@@ -15,14 +14,12 @@
     justify-content: center;
     margin: auto;
     width: 75%;
-
 }
     
-    .wrapper h2 {
-        font-size: 36px;
-        text-align: right;
-
-    } 
+.wrapper h2 {
+    font-size: 36px;
+    text-align: right;
+} 
         
 .wrapper .remember-forgot {
     font-size: 14.5px;
@@ -32,7 +29,6 @@
     label {
         margin-right: auto;
         padding: 4px;
-
     }
 }
 
@@ -47,17 +43,14 @@
     color:$color-light;
     font-weight: 600;
     text-decoration: none;
-
 }
 
 .register-link p a:hover {
     text-decoration: underline;
-
 }
 
 .signuplabel {
     margin: 0 40px 0 40px;
-
 }
 
 .logo {
@@ -66,10 +59,8 @@
     
     h1 {
         font-family: 'Black Ops One', sans-serif;
-        font-weight: 100;
-        
+        font-weight: 100;        
     }
-    
 }
 
 .links {
@@ -88,28 +79,21 @@
     gap: 1rem;
     padding: 5%;
     width: 100%;
-
 }
 
 @include desktop-lg {
 
     .logo {
-
         display: grid;
         place-items: center;
         
-        h1 
-        {
-
+        h1 {
             font-family: 'Black Ops One', sans-serif;
-            font-weight: 100;
-            
-        }
-        
+            font-weight: 100;           
+        }       
     }
 
-    .wrapper {
-        
+    .wrapper {      
         background:$tertiary-color-light;
         border-radius: 10px;
         color:$color-light;

@@ -1,7 +1,6 @@
 .wrapper .input-box {
     height: 60px;
     width: 60%;
-
 }
 
 .input-box input {
@@ -13,7 +12,6 @@
     outline: none;
     padding: 10px 45px 20px 20px;
     width: 100%;
-
 }
 
 .input-box {
@@ -21,26 +19,22 @@
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
-
 }
 
 .input-box input::placeholder {
     color:$color-light;
-
 }
 
 @include desktop-lg {
 
-    .wrapper .input-box
-    {
+    .wrapper .input-box {
         height: 45px;
         margin: 25px 0;
         position: relative;
         width: 100%;
     }
     
-    .input-box input 
-    {
+    .input-box input {
         border-radius: 40px;
         border: none;
         color:$color-light;
@@ -51,9 +45,7 @@
         width: 100%;
     }
     
-    .input-box input::placeholder
-    {
+    .input-box input::placeholder {
         color:$color-light;
     }
-
 }

@@ -13,22 +13,20 @@
 }
 
 .btn2 {
-        background:$secondary-color-light;
-        border-radius: 40px;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        font-weight: 600;
-        height: 40px;
-        margin: 0 10px 20px 30px;
-        outline: none;
-        width: 80%;
-
-    }
-        .center {
-        align-content: center;
-
-    }
+    background:$secondary-color-light;
+    border-radius: 40px;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+    height: 40px;
+    margin: 0 10px 20px 30px;
+    outline: none;
+    width: 80%;
+}
+.center {
+    align-content: center;
+}
 
 @include desktop-lg {
 
@@ -43,7 +41,6 @@
         margin: 0 10px 20px 30px;
         outline: none;
         width: 80%;
-
     }
 
     .btn2 {
@@ -57,11 +54,9 @@
         height: 40px;
         outline: none;
         width: 80%; 
-
     }
 
     .center {
         align-content: center;
-
     }
 }
