@@ -1,5 +1,47 @@
 <h2>Edit <%= resource_name.to_s.humanize %></h2>
 
+<%= form_for(@user, url: user_path(@user), method: :patch, html: { class: "my-form" }) do |form| %>
+   
+   <div class="field">
+    <%= image_tag current_user.image_profile.representation(resize_to_limit: [100, 100]) %>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :lastName %>
+    <%= form.text_field :lastName %>
+  </div>
+
+  <div class="field">
+    <%= form.label :birthday %>
+    <%= form.date_field :birthday %>
+  </div>
+
+  <div class="field">
+    <%= form.label :weight %>
+    <%= form.text_field :weight %>
+  </div>
+
+  <div class="field">
+    <%= form.label :height %>
+    <%= form.text_field :height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image_profile %>
+    <%= form.file_field :image_profile %>
+  </div>
+
+  <%= form.submit "Save Changes", class: "btn btn-primary" %>
+<% end %>
+
+
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 

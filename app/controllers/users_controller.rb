@@ -25,7 +25,8 @@ class UsersController < ApplicationController
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    @user.update(user_params)
+    @user = current_user.update(user_params)
+    redirect_to posts_path
   end
 
   private
