@@ -1,18 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
 @import url("https://fonts.googleapis.com/css?family=Black+Ops+One");
+
 @import "abstracts/mixins";
 
-
-
-
 @import
-     'themes/theme';
-  
+'themes/theme';
+
 @import 
-      'abstracts/variables',
+     'abstracts/variables',
      'abstracts/functions',
      'abstracts/mixins';
-
 
 @import
      'base/reset',
@@ -24,10 +21,10 @@
 
 @import
      'components/icons',
-    'components/posts',
-    'components/buttons',
-    'components/form',
-    'components/input';
+     'components/posts',
+     'components/buttons',
+     'components/form',
+     'components/input';
 
 @import
      'pages/feed';

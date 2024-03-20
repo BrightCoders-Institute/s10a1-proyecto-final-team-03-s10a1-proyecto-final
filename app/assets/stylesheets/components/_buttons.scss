@@ -1,10 +1,10 @@
-.btn{
+.btn
+{
     
     align-items: center;
-    background: #fff;
+    background:$secondary-color-light;
     border-radius: 40px;
     border: none;
-    color: #333;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
@@ -14,11 +14,12 @@
     width: 80%;
 }
 
-.btn2{
-        background: #ffffff;
+.btn2
+{
+    
+        background:$secondary-color-light;
         border-radius: 40px;
         border: none;
-        color: #333;
         cursor: pointer;
         font-size: 16px;
         font-weight: 600;
@@ -26,19 +27,22 @@
         margin: 0 10px 20px 30px;
         outline: none;
         width: 80%;
+
     }
-    .center{
+        .center
+    {
+
         align-content: center;
+
     }
 
 @include desktop-lg{
 
-    .btn{
-        
-        background: #ffffff;
+    .btn
+    {
+        background: $main-color-light;
         border-radius: 40px;
         border: none;
-        color: #333;
         cursor: pointer;
         font-size: 16px;
         font-weight: 600;
@@ -51,7 +55,7 @@
     }
 
     .btn2{
-        background: #ffffff;
+        background: $main-color-light;
         border-radius: 40px;
         border: none;
         color: #333;

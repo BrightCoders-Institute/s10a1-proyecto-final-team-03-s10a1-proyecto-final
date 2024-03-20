@@ -5,21 +5,21 @@
 
 }
 
+.wrapper 
+{
 
-.wrapper {
-
-    background: #D9D9D9;
+    align-items: center;
+    background: $tertiary-color-light;
+    color:$color-light;
     border-radius: 30px;
-    color: #000000;
+    flex-direction: column;
+    height: 55%;
+    justify-content: center;
     margin: auto;
     width: 75%;
-    height: 55%;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+
     }
     
-
     .wrapper h2{
         font-size: 36px;
         text-align: right;
@@ -35,7 +35,6 @@
     }
 }
 
-
 .wrapper .register-link{
     font-size: 14.5px;
     margin: 20px 0 15px;
@@ -43,7 +42,7 @@
 }
 
 .register-link p a {
-    color: #000000;
+    color:$color-light;
     font-weight: 600;
     text-decoration: none;
 }
@@ -90,12 +89,15 @@
 
 @include desktop-lg{
 
-    .logo{
+    .logo
+    {
+
         display: grid;
-        
         place-items: center;
         
-        h1 {
+        h1 
+        {
+
             font-family: 'Black Ops One', sans-serif;
             font-weight: 100;
             
@@ -103,56 +105,58 @@
         
     }
 
-    .wrapper {
+    .wrapper 
+    {
         
-        background: #D9D9D9;
+        background:$tertiary-color-light;
         border-radius: 10px;
-        color: #000000;
+        color:$color-light;
         padding: 80px 20px ;
     }
     
-    .wrapper h2{
+    .wrapper h2
+    {
         font-size: 36px;
         text-align: center;
     } 
     
-    .wrapper .remember-forgot{
+    .wrapper .remember-forgot
+    {
         display: flex;
         font-size: 14.5px;
         justify-content: space-between;
         margin: -8px 0 8px;
     }
     
-    .remember-forgot label, check_box{
+    .remember-forgot label, check_box
+    {
         
-        accent-color: #000000;
+        accent-color:$color-light;
         margin: 10px 220px 10px 10px;
     
     }
     
-    
-
-    
-    
-    
-    .wrapper .register-link{
+    .wrapper .register-link
+    {
         font-size: 14.5px;
         margin: 20px 0 15px;
         text-align: center;
     }
     
-    .register-link p a {
-        color: #000000;
+    .register-link p a 
+    {
+        color:$color-light;
         font-weight: 600;
         text-decoration: none;
     }
     
-    .register-link p a:hover {
+    .register-link p a:hover
+    {
         text-decoration: underline;
     }
     
-    .signuplabel{
+    .signuplabel
+    {
         margin: 0 40px 0 40px;
-    
     }
 }

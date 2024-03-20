@@ -1,13 +1,14 @@
-.wrapper .input-box{
+.wrapper .input-box
+{
     height: 50px;
-
     width: 80%;
 }
 
-.input-box input {
+.input-box input
+{
     border-radius: 20px;
     border: none;
-    color: #0a0a0a;
+    color:$color-light;
     font-size: 16px;
     height: 20px;
     outline: none;
@@ -15,30 +16,33 @@
     width: 100%;
 }
 
-.input-box{
+.input-box
+{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: flex-start;
 }
+
 .input-box input::placeholder{
-    color: #000000;
+    color:$color-light;
 }
 
 @include desktop-lg {
 
-    .wrapper .input-box{
+    .wrapper .input-box
+    {
         height: 45px;
         margin: 25px 0;
         position: relative;
         width: 100%;
     }
     
-    .input-box input {
+    .input-box input 
+    {
         border-radius: 40px;
-        border: 2px solid rgba(255, 255, 255, .2);
         border: none;
-        color: #0a0a0a;
+        color:$color-light;
         font-size: 16px;
         height: 50%;
         outline: none;
@@ -46,8 +50,9 @@
         width: 100%;
     }
     
-    .input-box input::placeholder{
-        color: #000000;
+    .input-box input::placeholder
+    {
+        color:$color-light;
     }
 
 }
