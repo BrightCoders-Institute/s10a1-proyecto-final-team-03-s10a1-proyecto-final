@@ -1,11 +1,11 @@
-<h1>Publicación de <%= current_user.email %></h1>
+<h1>Publicación de <%= @post.user.name %></h1>
 <h2><%=@post.body%></h2>
 <div class="post-images">
     <% if @post.images.attached? %>
-    <% @post.images.each do |image| %>
+      <% @post.images.each do |image| %>
         <div>
-        <%= image_tag image, width:250 %>
+          <%= image_tag image.representation(resize_to_limit: [300, 300]) %>
         </div>
-    <% end %>
+      <% end %>
     <% end %>
 </div>
