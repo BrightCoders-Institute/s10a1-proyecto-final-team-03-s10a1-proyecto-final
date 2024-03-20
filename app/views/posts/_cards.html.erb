@@ -2,38 +2,49 @@
 
 <div class="posts">
   <% @posts.each do |post| %>
-    <%= link_to post_path(post.id) do%>
-      <div class="post">
+    <div class="post">
+      <%= link_to post_path(post.id) do%>
         <div class="post-header">
           <div class="user">
             <%= image_tag('avatar-default.webp') %>
             <div>
-              <h2><%=post.user.name%> <%=post.user.lastName%></h2>
+              <h2><%= post.user.name %> <%= post.user.lastName %></h2>
               <p><%= post.created_at.strftime("%d-%m-%Y a las %H:%M") %></p>
             </div>
           </div>
           <i class="bi bi-three-dots"></i>
         </div>
-        <div class="post-body">
-          <%=post.body%>
-        </div>
-        <div class="post-images">
-          <% if post.images.attached? %>
-            <% post.images.each do |image| %>
-              <div>
-                <%= image_tag image.representation(resize_to_limit: [300, 300]) %>
-              </div>
-            <% end %>
+      <% end %>
+      <div class="post-body">
+        <%= post.body %>
+      </div>
+      <div class="post-images">
+        <% if post.images.attached? %>
+          <% post.images.each do |image| %>
+            <div>
+              <%= image_tag image.representation(resize_to_limit: [300, 300]) %>
+            </div>
           <% end %>
-        </div>
-        <div class="post-footer">
-          <div class="actions">
-            <i class="bi bi-heart-fill"></i>
-            <i class="bi bi-chat-fill"></i>
-            <i class="bi bi-share-fill"></i>
-          </div>
+        <% end %>
+      </div>
+      <div class="post-footer">
+        <div class="actions">
+          <i class="bi bi-heart-fill"></i>
+          <i class="bi bi-chat-fill"></i>
+          <i class="bi bi-share-fill"></i>
         </div>
       </div>
-    <%end%>
+    </div>
+  <% if @user_likes[post.id] %>
+    <%= form_with(model: @user_likes[post.id], url: post_like_path(post, @user_likes[post.id]), method: :delete) do |form| %>
+      <%= form.hidden_field :id %>
+      <%= form.submit "Unlike", class: "like-button" %>
+    <% end %>
+  <% else %>
+    <%= form_with(model: @like, url: post_likes_path(post), method: :post) do |form| %>
+      <%= form.submit "Like", class: "like-button" %>
+    <% end %>
   <% end %>
+  <span class="likes-count"><%= post.likes_count %> likes</span>
+<% end %>
 </div>
