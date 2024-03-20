@@ -1,0 +1,10 @@
+<% if @user_likes[post.id] %>
+  <%= form_with(model: @user_likes[post.id], url: post_like_path(post, @user_likes[post.id]), method: :delete) do |form| %>
+    <%= form.hidden_field :id %>
+    <%= form.submit "Unlike", class: "like-button" %>
+  <% end %>
+<% else %>
+  <%= form_with(model: @like, url: post_likes_path(post), method: :post) do |form| %>
+    <%= form.submit "Like", class: "like-button" %>
+  <% end %>
+<% end %>
