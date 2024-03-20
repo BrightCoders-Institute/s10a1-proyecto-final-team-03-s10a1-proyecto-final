@@ -52,9 +52,14 @@ class PostsController < ApplicationController
     @post.destroy
   end
 
-  def destroy_images
+  def destroy_image
     @post = Post.find(params[:id])
-    @post.images.each { image.destroy }
+    @post.images.each do |image|
+      image.each do |img|
+        img.destroy
+      end
+    end
+    redirect_back fallback_location: edit_user_registration_path, notice: 'succes'
   end
 
   private

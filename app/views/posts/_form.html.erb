@@ -21,6 +21,7 @@
             <% @post.images.each do |image| %>
                 <div>
                   <%= image_tag image.representation(resize_to_limit: [300, 300]) %>
+                  <%= link_to 'Destroy Image', destroy_image_post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
                 </div>
             <% end %>
           </div>
@@ -33,7 +34,6 @@
           <%= form.label :images, "Upload your images", style: "display: block" %>
           <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true, required: true %>
         <% end %>
-      
     </div>
     <%= form.submit %>
   <% end %>
