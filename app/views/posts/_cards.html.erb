@@ -8,7 +8,7 @@
           <div class="user">
             <%= image_tag('avatar-default.webp') %>
             <div>
-              <h2><%= post.user.name %> <%= post.user.lastName %></h2>
+              <h2><%= "#{post.user.name} #{post.user.lastNamename}" %></h2>
               <p><%= post.created_at.strftime("%d-%m-%Y a las %H:%M") %></p>
             </div>
           </div>
