@@ -25,16 +25,15 @@
             <% end %>
           </div>
         <% if @post.images.any? %>
-        <div>
-          <%= form.label :images, "Upload a new image", style: "display: block" %>
-          <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true, required: true %>
-        </div>
+          <div>
+            <%= form.label :images, "Upload a new image", style: "display: block" %>
+            <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true, required: true %>
+          </div>
         <% else %>
           <%= form.label :images, "Upload your images", style: "display: block" %>
           <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true, required: true %>
         <% end %>
-      
-    </div>
+      </div>
     <%= form.submit %>
   <% end %>
 </div>
