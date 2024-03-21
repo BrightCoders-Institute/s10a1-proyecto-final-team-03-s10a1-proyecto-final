@@ -27,9 +27,7 @@ class Post < ApplicationRecord
 
   def select_image(img_id)
     blob_id = ActiveStorage::Blob.find_signed!(img_id).id
-
     image = ActiveStorage::Attachment.find_by(blob_id: blob_id)
-
     image.purge if image.present?
   end
 end
