@@ -21,13 +21,14 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.user_post(current_user)
+    @posts = Post.user_post(current_user).order(created_at: :desc)
+    @user_likes = current_user.likes.where(post_id: @posts.map(&:id)).index_by(&:post_id)
   end
 
   def edit
-    return if current_user == @post.user
-
-    redirect_to root_path, alert: 'You are not authorized to edit this post.'
+    unless current_user == @post.user
+      redirect_to root_path, alert: 'You are not authorized to edit this post.'
+    end
   end
 
   def show
@@ -39,8 +40,15 @@ class PostsController < ApplicationController
       redirect_to root_path, alert: 'You are not authorized to update this post.'
       return
     end
-    @post.update(post_params)
-    redirect_to posts_path
+
+    respond_to do |format|
+      if @post.update(post_params)
+        update_status(format)
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @post.errors, status: :unprocessable_entity }
+      end
+    end
   end
 
   def destroy
@@ -50,16 +58,11 @@ class PostsController < ApplicationController
     end
 
     @post.destroy
-  end
 
-  def destroy_image
-    @post = Post.find(params[:id])
-    @post.images.each do |image|
-      image.each do |img|
-        img.destroy
-      end
+    respond_to do |format|
+      format.html { redirect_to root_path, notice: 'Post was successfully deleted.' }
+      format.json { head :no_content }
     end
-    redirect_back fallback_location: edit_user_registration_path, notice: 'succes'
   end
 
   private
@@ -71,6 +74,13 @@ class PostsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def post_params
-    params.require(:post).permit(:body, images: [])
+    params.require(:post).permit(:body, images: [], images_to_remove: [])
+  end
+
+  def update_status(format)
+    @post.remove_images if @post.persisted? && post_params[:images_to_remove].present?
+
+    format.html { redirect_to root_path, notice: 'Post was successfully updated.' }
+    format.json { render :show, status: :ok, location: @post }
   end
 end

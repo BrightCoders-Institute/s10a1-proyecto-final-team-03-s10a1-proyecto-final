@@ -1,40 +1,35 @@
 <h2 class="mt-0"><%= title %></h2>
+<%= form_with(model: @post) do |form| %>
 
-<div class="posts">
-  <%= form_with(model: @post) do |form| %>
-    <div class="post">
-      <div class="post-header">
-        <div class="user">
-          <%= image_tag current_user.image_profile %>
+  <div>
+    <%= form.label :body, style: "display: block" %>
+    <%= form.text_field :body %>
+  </div>
+
+  <div>
+    <% if @post.images.any? %>
+      <div>
+        <%= form.label :images, "Upload a new image", style: "display: block" %>
+        <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true %>
+      </div>
+      <%= form.label :images, "Select images to delete", style: "display: block" %>
+      <% @post.images.each do |image| %>
+        <% if image.persisted? %>
           <div>
-            <h2><%= current_user.name %> <%= current_user.lastName %></h2>
-            <p><%= Time.now.strftime("%d-%m-%Y a las %H:%M") %></p>
+            <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+            <%= check_box_tag "post[images_to_remove][]", image.signed_id, false, { id: "post_images_to_remove_#{image.signed_id}" } %>
+            <%= label_tag "post_images_to_remove_#{image.signed_id}", "Delete", style: "display: inline" %>
+            <%= image_tag image, width: 200 %>
           </div>
-        </div>
-        <i class="bi bi-three-dots"></i>
-      </div>
-      <div class="post-body">
-        <%= form.label :body, style: "display: block" %>
-        <%= form.text_field :body %>
-      </div>
-      <div class="post-images">
-            <% @post.images.each do |image| %>
-                <div>
-                  <%= image_tag image.representation(resize_to_limit: [300, 300]) %>
-                  <%= link_to 'Destroy Image', destroy_image_post_path(@post), method: :delete, data: { confirm: 'Are you sure?' } %>
-                </div>
-            <% end %>
-          </div>
-        <% if @post.images.any? %>
-        <div>
-          <%= form.label :images, "Upload a new image", style: "display: block" %>
-          <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true, required: true %>
-        </div>
-        <% else %>
-          <%= form.label :images, "Upload your images", style: "display: block" %>
-          <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true, required: true %>
         <% end %>
-    </div>
+      <% end %>
+    <% else %>
+      <%= form.label :images, "Upload your images", style: "display: block" %>
+      <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true %>
+    <% end %>
+  </div>
+
+  <div>
     <%= form.submit %>
-  <% end %>
-</div>
+  </div>
+<% end %>
