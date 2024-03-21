@@ -19,13 +19,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-
     @user.save
   end
 
   # PATCH/PUT /users/1 or /users/1.json
   def update
-    @user.update(user_params)
+    @user = current_user.update(user_params)
+    redirect_to posts_path
   end
 
   private

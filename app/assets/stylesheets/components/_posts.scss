@@ -29,6 +29,7 @@
       height: 3rem;
       width: 3rem;
       padding-right: 8px;
+
     }
 
     div {
@@ -44,6 +45,7 @@
       p {
         font-size: 15px;
         font-weight: 300;
+
       }
     }
   }
@@ -53,6 +55,7 @@
 
     @include themify {
       color: theme('colorInverted');
+
     }
   }
 }
@@ -60,6 +63,7 @@
 .post-body {
   img {
     width: 100%;
+
   }
 }
 
@@ -77,6 +81,7 @@
   i {
     @include themify {
       color: theme('colorInverted');
+      
     }
   }
 }
