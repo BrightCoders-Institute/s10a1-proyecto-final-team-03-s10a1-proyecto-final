@@ -4,6 +4,10 @@
 class User < ApplicationRecord
   has_one_attached :image_profile
   has_many :posts
+
+  validates :image_profile,
+            content_type: { in: %w[image/png image/jpg image/jpeg], message: 'must be an image',
+                            processable_image: true, aspect_ratio: :landscape }
   has_many :likes
 
   devise :database_authenticatable, :registerable,

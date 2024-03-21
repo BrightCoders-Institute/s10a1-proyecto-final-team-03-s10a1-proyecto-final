@@ -7,6 +7,8 @@ Rails.application.routes.draw do
                omniauth_callbacks: 'users/omniauth_callbacks'
              }
   resources :users
+  resources :posts
+  resources :images
   resources :posts do
     resources :likes, only: %i[create destroy]
   end
