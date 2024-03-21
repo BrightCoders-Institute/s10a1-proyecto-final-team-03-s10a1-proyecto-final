@@ -4,6 +4,10 @@
 class User < ApplicationRecord
   has_one_attached :image_profile
   has_many :posts
+<<<<<<< HEAD
+=======
+
+>>>>>>> 58fc98cc8f40c36dc8aec7aa95e122abd4f3b83d
   validates :image_profile,
             content_type: { in: %w[image/png image/jpg image/jpeg], message: 'must be an image',
                             processable_image: true, aspect_ratio: :landscape }
