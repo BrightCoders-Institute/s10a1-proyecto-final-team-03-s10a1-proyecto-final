@@ -10,7 +10,7 @@
 }
 
 .histories {
-  height: $avatar-size + 2rem;
+  min-height: $avatar-size + 1rem;
   margin: 1rem 1rem 0;
   overflow: auto;
 
