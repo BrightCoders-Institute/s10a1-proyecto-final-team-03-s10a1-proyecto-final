@@ -10,5 +10,8 @@ Rails.application.routes.draw do
   resources :images
   resources :posts do
     resources :likes, only: %i[create destroy]
+    resources :comments, only: %i[create destroy] do
+      post 'reply', on: :collection
+    end
   end
 end
