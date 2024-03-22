@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
-  before_action :find_post, only: [:create]
+  before_action :find_post, only: %i[create reply]
 
   def create
     @comment = @post.comments.build(comment_params)
@@ -16,7 +16,6 @@ class CommentsController < ApplicationController
   end
 
   def reply
-    @post = Post.find(params[:post_id])
     @parent_comment = Comment.find(params[:parent_comment_id])
     @comment = Comment.new(parent_comment: @parent_comment)
   end
