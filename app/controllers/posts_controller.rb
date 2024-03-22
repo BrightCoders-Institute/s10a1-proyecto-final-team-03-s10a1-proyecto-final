@@ -31,9 +31,7 @@ class PostsController < ApplicationController
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
-  end
+  def show; end
 
   def update
     unless current_user == @post.user
@@ -68,6 +66,7 @@ class PostsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
+    @comments = @post.comments.includes(:user, :replies)
   end
 
   # Only allow a list of trusted parameters through.
