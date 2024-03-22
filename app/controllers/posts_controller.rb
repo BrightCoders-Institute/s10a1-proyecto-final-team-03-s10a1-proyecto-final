@@ -23,12 +23,14 @@ class PostsController < ApplicationController
   def index
     @posts = current_user.posts.order(created_at: :desc)
     @user_likes = current_user.likes.where(post_id: @posts.map(&:id)).index_by(&:post_id)
+    @users = User.all
+    @follow = current_user.followers
   end
 
   def edit
-    unless current_user == @post.user
-      redirect_to root_path, alert: 'You are not authorized to edit this post.'
-    end
+    return if current_user == @post.user
+
+    redirect_to root_path, alert: 'You are not authorized to edit this post.'
   end
 
   def show
@@ -51,9 +53,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    unless current_user == @post.user
-      redirect_to root_path, alert: 'You are not authorized to delete this post.'
-    end
+    redirect_to root_path, alert: 'You are not authorized to delete this post.' unless current_user == @post.user
 
     @post.destroy
 

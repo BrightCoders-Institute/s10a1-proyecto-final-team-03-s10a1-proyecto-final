@@ -1,0 +1,4 @@
+<%= form_with(model: Follower.new, url: user_followers_url(user), method: :post) do |form| %>
+    <%= form.hidden_field :id %>
+    <%= form.submit "Follow", class: "btn" %>
+<% end %>
