@@ -2,10 +2,16 @@
 <h2><%=@post.body%></h2>
 <div class="post-images">
     <% if @post.images.attached? %>
-    <% @post.images.each do |image| %>
+      <% @post.images.each do |image| %>
         <div>
-        <%= image_tag image.representation(resize_to_limit: [300, 300]) %>
+          <%= image_tag image.representation(resize_to_limit: [300, 300]) %>
         </div>
-    <% end %>
+      <% end %>
     <% end %>
 </div>
+<h2>Comments</h2>
+<% @comments.each do |comment| %>
+  <%= render 'comments/comment', comment: comment %>
+<% end %>
+
+<%= render 'comments/comment_form', post: @post %>

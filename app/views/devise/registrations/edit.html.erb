@@ -35,7 +35,7 @@
 
   <div class="field">
     <%= form.label :image_profile %>
-    <%= form.file_field :image_profile %>
+    <%= form.file_field :image_profile, accept: "image/jpg, image/jpeg, image/png" %>
   </div>
 
   <%= form.submit "Save Changes", class: "btn btn-primary" %>
