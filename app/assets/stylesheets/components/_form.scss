@@ -7,13 +7,16 @@
 .wrapper {
     align-items: center;
     background: $tertiary-color-light;
-    border-radius: 30px;
-    color:$color-light;
+    border-radius: 15px;
     flex-direction: column;
-    height: 55%;
+    height: 60%;
     justify-content: center;
     margin: auto;
-    width: 75%;
+    width: 70%;
+    @include themify {
+        background: theme("backgroundColor-tertiary");
+        color: theme("colorInverted");
+    } 
 }
     
 .wrapper h2 {
@@ -69,6 +72,7 @@
     &__devise {
         display: flex;
         gap: 1rem;
+        text-align: center;
         justify-content: space-between;
     }
 }
@@ -94,10 +98,13 @@
     }
 
     .wrapper {      
-        background:$tertiary-color-light;
         border-radius: 10px;
-        color:$color-light;
         padding: 80px 20px ;
+        @include themify {
+            background: theme("backgroundColor-tertiary");
+            color: theme("colorInverted");
+        } 
+        
     }
     
     .wrapper h2 {
@@ -113,9 +120,10 @@
     }
     
     .remember-forgot label, check_box {
-        
-        accent-color:$color-light;
         margin: 10px 220px 10px 10px;
+        @include themify {
+            accent-color: theme("colorInverted");
+        } 
     
     }
     
@@ -126,9 +134,11 @@
     }
     
     .register-link p a {
-        color:$color-light;
         font-weight: 600;
         text-decoration: none;
+        @include themify {
+            color: theme("colorInverted");
+        } 
     }
     
     .register-link p a:hover {

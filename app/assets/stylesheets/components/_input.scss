@@ -6,12 +6,14 @@
 .input-box input {
     border-radius: 20px;
     border: none;
-    color:$color-light;
     font-size: 16px;
     height: 10px;
     outline: none;
     padding: 10px 45px 20px 20px;
     width: 100%;
+    @include themify {
+        color: theme("colorInverted");
+    }
 }
 
 .input-box {
@@ -22,7 +24,9 @@
 }
 
 .input-box input::placeholder {
-    color:$color-light;
+    @include themify {
+        color: theme("colorInverted");
+    }
 }
 
 @include desktop-lg {
@@ -37,15 +41,19 @@
     .input-box input {
         border-radius: 40px;
         border: none;
-        color:$color-light;
         font-size: 16px;
         height: 50%;
         outline: none;
         padding: 20px 45px 20px 20px;
         width: 100%;
+        @include themify {
+            color: theme("colorInverted");
+        }
     }
     
     .input-box input::placeholder {
-        color:$color-light;
+        @include themify {
+            color: theme("colorInverted");
+        }
     }
 }
