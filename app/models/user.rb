@@ -1,10 +1,14 @@
 # frozen_string_literal: false
 
-# class Usermodel
 class User < ApplicationRecord
   has_one_attached :image_profile
   has_many :posts
   has_many :likes
+  has_many :comments
+
+  validates :image_profile,
+            content_type: { in: %w[image/png image/jpg image/jpeg], message: 'must be an image',
+                            processable_image: true, aspect_ratio: :landscape }
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,

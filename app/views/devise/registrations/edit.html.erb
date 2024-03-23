@@ -3,7 +3,7 @@
 <%= form_for(@user, url: user_path(@user), method: :patch, html: { class: "my-form" }) do |form| %>
    
    <div class="field">
-    <%= image_tag current_user.image_profile.representation(resize_to_limit: [100, 100]) %>
+    <%= current_user.image_profile.attached? ? image_tag(current_user.image_profile) : image_tag('avatar-default.webp') %>
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
@@ -35,7 +35,7 @@
 
   <div class="field">
     <%= form.label :image_profile %>
-    <%= form.file_field :image_profile %>
+    <%= form.file_field :image_profile, accept: "image/jpg, image/jpeg, image/png" %>
   </div>
 
   <%= form.submit "Save Changes", class: "btn btn-primary" %>

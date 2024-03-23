@@ -15,7 +15,7 @@
 
   <div class="field">
     <%= f.label :image_profile, "Upload a new image", style: "display: block" %>
-    <%= f.file_field :image_profile %>
+    <%= f.file_field :image_profile, accept: "image/jpg, image/jpeg, image/png"  %>
   </div>
 
   <div class="field">

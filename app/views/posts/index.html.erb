@@ -1,13 +1,13 @@
 <div class="profile-header">
   <div>
     <div class="profile-header__avatar">
-      <%= image_tag current_user.image_profile %>
+      <%= current_user.image_profile.attached? ? image_tag(current_user.image_profile) : image_tag('avatar-default.webp') %>
     </div>
     <div class="profile-header__info">
       <h2><%= current_user.name %></h2>
       <div class="stats">
         <div class="stats__item">
-          <p>@post.user</p>
+          <p>4</p>
           <p>Posts</p>
         </div>
         <div class="stats__item">

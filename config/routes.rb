@@ -7,7 +7,11 @@ Rails.application.routes.draw do
                omniauth_callbacks: 'users/omniauth_callbacks'
              }
   resources :users
+  resources :images
   resources :posts do
     resources :likes, only: %i[create destroy]
+    resources :comments, only: %i[create destroy] do
+      post 'reply', on: :collection
+    end
   end
 end

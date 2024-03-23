@@ -9,3 +9,9 @@
       <% end %>
     <% end %>
 </div>
+<h2>Comments</h2>
+<% @comments.each do |comment| %>
+  <%= render 'comments/comment', comment: comment %>
+<% end %>
+
+<%= render 'comments/comment_form', post: @post %>
