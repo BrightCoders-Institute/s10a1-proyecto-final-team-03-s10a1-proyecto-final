@@ -1,12 +1,10 @@
-<%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
-
 <div class="posts">
   <% @posts.each do |post| %>
     <div class="post">
       <%= link_to edit_post_path(post.id) do%>
         <div class="post-header">
           <div class="user">
-            <%= post.user.image_profile.attached? ? image_tag(post.user.image_profile) : image_tag("avatar-default.webp") %>
+            <%= image_tag image_profile? %>
             <div>
               <h2><%= "#{post.user.name} #{post.user.lastName}" %></h2>
               <p><%= post.created_at.strftime("%d-%m-%Y a las %H:%M") %></p>
