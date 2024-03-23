@@ -3,7 +3,6 @@
 <%= form_for(@user, url: user_path(@user), method: :patch, html: { class: "my-form" }) do |form| %>
    
    <div class="field">
-    <%= image_tag current_user.image_profile.representation(resize_to_limit: [100, 100]) %>
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>

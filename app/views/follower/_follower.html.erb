@@ -1,4 +1,12 @@
-<%= form_with(model: Follower.new, url: user_followers_url(user), method: :post) do |form| %>
-    <%= form.hidden_field :id %>
-    <%= form.submit "Follow", class: "btn" %>
+
+<% if condicion %>
+    <%= form_with(model: @follow, url: user_follower_url(user, @follow), method: :delete) do |form| %>
+        <%= form.submit "Unfollow", class: "btn" %>
+    <% end %>
+    <% else %>
+        <%= form_with(model: Follower.new, url: user_followers_url(user), method: :post) do |form| %>
+            <%= form.hidden_field :follower_user_id, value: current_user.id %>
+            <%= form.submit "Follow", class: "btn" %>
+        <% end %>
 <% end %>
+

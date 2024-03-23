@@ -2,6 +2,7 @@ class Follower < ApplicationRecord
   belongs_to :user, class_name: 'User', foreign_key: 'user_id'
   belongs_to :follower_user, class_name: 'User', foreign_key: 'follower_user_id'
   validates :user_id, uniqueness: { scope: :follower_user_id }
+  validates :follower_user_id, uniqueness: { scope: :user_id }
 
   def new
     @follow = Follow.new
