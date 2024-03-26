@@ -1,7 +1,9 @@
+<%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
+
 <% @users.each do |user| %>    
   <div class="profile-header">
     <div>
-      <%# <% if current_user.id == user.id %>  <%# THIS IS HERE BECAUSE WE GONNA USE ON THE NEXT ISSUE & WE DONT WANNA FORGET IT%>
+      <% if current_user.id == user.id %>
           <div class="profile-header__avatar">
             <%= user.image_profile.attached? ? image_tag(user.image_profile) : image_tag('avatar-default.webp') %>
           </div>
@@ -27,9 +29,8 @@
           </div>
         </div>
       </div>
-    <%# <% end %> 
+    <% end %>
   </div>
-<% end %>
 
 <%= render 'main/histories' %>
 </div>
@@ -47,6 +48,7 @@
   </div>
 </div>
 <div class="profile-main">
+  <%= render partial: 'cards', locals: {user: user} %>
 </div>
 
-<%= render 'cards' %>
+<% end %>

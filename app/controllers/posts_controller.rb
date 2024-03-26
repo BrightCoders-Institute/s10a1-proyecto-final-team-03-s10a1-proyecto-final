@@ -33,13 +33,11 @@ class PostsController < ApplicationController
     redirect_to root_path, alert: 'You are not authorized to edit this post.'
   end
 
-  def show
-  end
+  def show; end
 
   def update
     unless current_user == @post.user
       redirect_to root_path, alert: 'You are not authorized to update this post.'
-      return
     end
 
     respond_to do |format|
@@ -68,6 +66,7 @@ class PostsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
+    @comments = @post.comments.includes(:user, :replies)
   end
 
   # Only allow a list of trusted parameters through.

@@ -1,0 +1,6 @@
+<% if post.present? %>
+  <%= form_with(model: [post, post.comments.build], url: post_comments_path(post)) do |form| %>
+    <%= form.text_area :body, placeholder: "Add a comment..." %>
+    <%= form.submit "Post Comment" %>
+  <% end %>
+<% end %>
