@@ -22,7 +22,7 @@
             </div>
           </div>
           <div class="actions">
-            <%= render partial: 'follower/follower', locals: { user: user, condicion: @condicion = true ? user == current_user : current_user.id != user.id } if current_user != user %>
+            <%= render partial: 'follower/follower', locals: { user: user } if current_user != user %>
             <%= link_to 'Configure profile', edit_user_registration_path, class: 'btn' %>
           </div>
         </div>

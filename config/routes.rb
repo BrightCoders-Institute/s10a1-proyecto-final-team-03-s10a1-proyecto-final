@@ -8,7 +8,7 @@ Rails.application.routes.draw do
              }
 
   resources :users do
-    resources :followers, only: %i[create destroy]
+    resources :followers, only: %i[create destroy show]
   end
 
   resources :images

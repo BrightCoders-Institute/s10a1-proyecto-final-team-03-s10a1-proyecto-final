@@ -21,6 +21,7 @@ class FollowersController < ApplicationController
     if @follow.destroy
       @follow.decrement_following
       @user.decrement_followers
+
       redirect_back fallback_location: root_path, notice: 'Unfollow added!'
     else
       redirect_back fallback_location: root_path, alert: 'Failed to add unfollow!'
