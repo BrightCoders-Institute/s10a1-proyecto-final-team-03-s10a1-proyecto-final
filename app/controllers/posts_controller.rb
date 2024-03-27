@@ -28,17 +28,13 @@ class PostsController < ApplicationController
   end
 
   def edit
-    return if current_user == @post.user
-
-    redirect_to root_path, alert: 'You are not authorized to edit this post.'
+    redirect_to root_path, alert: 'You are not authorized to edit this post.' unless current_user == @post.user
   end
 
   def show; end
 
   def update
-    unless current_user == @post.user
-      redirect_to root_path, alert: 'You are not authorized to update this post.'
-    end
+    redirect_to root_path, alert: 'You are not authorized to update this post.' unless current_user == @post.user
 
     respond_to do |format|
       if @post.update(post_params)
@@ -51,14 +47,11 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    redirect_to root_path, alert: 'You are not authorized to delete this post.' unless current_user == @post.user
-
-    @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Post was successfully deleted.' }
-      format.json { head :no_content }
+    unless current_user == @post.user
+      redirect_to root_path, alert: 'You are not authorized to delete this post.',
+                             status: :unauthorized
     end
+    @post.destroy
   end
 
   private
