@@ -28,13 +28,19 @@ class PostsController < ApplicationController
   end
 
   def edit
-    redirect_to root_path, alert: 'You are not authorized to edit this post.' unless current_user == @post.user
+    unless current_user == @post.user
+      redirect_to root_path, alert: 'You are not authorized to edit this post.',
+                             status: :unauthorized
+    end
   end
 
   def show; end
 
   def update
-    redirect_to root_path, alert: 'You are not authorized to update this post.' unless current_user == @post.user
+    unless current_user == @post.user
+      redirect_to root_path, alert: 'You are not authorized to update this post.',
+                             status: :unauthorized
+    end
 
     respond_to do |format|
       if @post.update(post_params)
