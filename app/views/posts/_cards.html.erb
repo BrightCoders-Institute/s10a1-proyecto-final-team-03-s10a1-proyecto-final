@@ -14,7 +14,7 @@
         </div>
       <% end %>
       <div class="post-body">
-      <%= link_to users_path do%>
+      <%= link_to user_path(post.user_id) do%>
           <%= post.body %>
         </div>
         <div class="post-images">
