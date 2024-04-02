@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_03_20_022058) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_22_000347) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,7 +46,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_022058) do
     t.text "body"
     t.bigint "user_id", null: false
     t.bigint "post_id", null: false
-    t.bigint "parent_comment_id", null: false
+    t.bigint "parent_comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["parent_comment_id"], name: "index_comments_on_parent_comment_id"
@@ -126,6 +126,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_20_022058) do
     t.string "uid"
     t.string "avatar_url"
     t.string "provider"
+    t.integer "following_count", default: 0
+    t.integer "followers_count", default: 0
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"

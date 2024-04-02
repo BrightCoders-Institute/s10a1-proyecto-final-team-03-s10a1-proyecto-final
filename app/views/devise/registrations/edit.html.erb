@@ -3,7 +3,6 @@
 <%= form_for(@user, url: user_path(@user), method: :patch, html: { class: "my-form" }) do |form| %>
    
    <div class="field">
-    <%= image_tag current_user.image_profile.representation(resize_to_limit: [100, 100]) %>
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
@@ -35,7 +34,7 @@
 
   <div class="field">
     <%= form.label :image_profile %>
-    <%= form.file_field :image_profile %>
+    <%= form.file_field :image_profile, accept: "image/jpg, image/jpeg, image/png" %>
   </div>
 
   <%= form.submit "Save Changes", class: "btn btn-primary" %>
@@ -77,6 +76,9 @@
     <%= f.submit "Update" %>
   </div>
 <% end %>
+
+<h3>Logout</h3>
+<%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
 
 <h3>Cancel my account</h3>
 

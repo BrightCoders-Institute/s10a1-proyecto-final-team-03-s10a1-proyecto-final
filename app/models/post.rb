@@ -4,10 +4,13 @@ class Post < ApplicationRecord
   scope :user_post, ->(user) { where(user_id: user.id) }
 
   has_many :likes
+  has_many :comments
   has_many_attached :images
 
   validates :body, presence: true
-  validate :validate_image_content_type
+  validates :images,
+            content_type: { in: %w[image/png image/jpg image/jpeg], message: 'must be an image',
+                            processable_image: true, aspect_ratio: :landscape }
 
   attr_accessor :images_to_remove
 
@@ -26,19 +29,6 @@ class Post < ApplicationRecord
   def select_image(img_id)
     blob_id = ActiveStorage::Blob.find_signed!(img_id).id
     image = ActiveStorage::Attachment.find_by(blob_id: blob_id)
-
     image.purge if image.present?
-  end
-
-  def validate_at_least_one_image_attached
-    errors.add(:images, 'must be attached') unless images.attached?
-  end
-
-  def validate_image_content_type
-    images.each do |image|
-      unless image.content_type.in?(['image/jpg', 'image/png', 'image/jpeg'])
-        errors.add(:images, 'must be a valid image format (PNG, JPG, JPEG)')
-      end
-    end
   end
 end

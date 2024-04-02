@@ -21,23 +21,25 @@ class PostsController < ApplicationController
   end
 
   def index
-    @posts = Post.user_post(current_user).order(created_at: :desc)
+    @posts = current_user.posts.order(created_at: :desc)
+    @user_likes = current_user.likes.where(post_id: @posts.map(&:id)).index_by(&:post_id)
+    @users = User.all
+    @follow = User.where(user_id: current_user.id)
   end
 
   def edit
     unless current_user == @post.user
-      redirect_to root_path, alert: 'You are not authorized to edit this post.'
+      redirect_to root_path, alert: 'You are not authorized to edit this post.',
+                             status: :unauthorized
     end
   end
 
-  def show
-    @post = Post.find(params[:id])
-  end
+  def show; end
 
   def update
     unless current_user == @post.user
-      redirect_to root_path, alert: 'You are not authorized to update this post.'
-      return
+      redirect_to root_path, alert: 'You are not authorized to update this post.',
+                             status: :unauthorized
     end
 
     respond_to do |format|
@@ -52,16 +54,10 @@ class PostsController < ApplicationController
 
   def destroy
     unless current_user == @post.user
-      redirect_to root_path, alert: 'You are not authorized to delete this post.'
-      return
+      redirect_to root_path, alert: 'You are not authorized to delete this post.',
+                             status: :unauthorized
     end
-
     @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Post was successfully deleted.' }
-      format.json { head :no_content }
-    end
   end
 
   private
@@ -69,6 +65,7 @@ class PostsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_post
     @post = Post.find(params[:id])
+    @comments = @post.comments.includes(:user, :replies)
   end
 
   # Only allow a list of trusted parameters through.

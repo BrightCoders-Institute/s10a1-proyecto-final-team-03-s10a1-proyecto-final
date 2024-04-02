@@ -10,7 +10,7 @@
     <% if @post.images.any? %>
       <div>
         <%= form.label :images, "Upload a new image", style: "display: block" %>
-        <%= form.file_field :images, multiple: true %>
+        <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true %>
       </div>
       <%= form.label :images, "Select images to delete", style: "display: block" %>
       <% @post.images.each do |image| %>
@@ -25,12 +25,8 @@
       <% end %>
     <% else %>
       <%= form.label :images, "Upload your images", style: "display: block" %>
-      <%= form.file_field :images, multiple: true %>
+      <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true %>
     <% end %>
   </div>
-
-  <div>
     <%= form.submit %>
-  </div>
-
 <% end %>
