@@ -9,9 +9,6 @@
     margin: 0 10px 20px 30px;
     outline: none;
     width: 80%;
-    @include themify {
-        background: theme("backgroundColor-secondary");
-    }
 }
 
 .btn2 {
@@ -24,13 +21,17 @@
     margin: 0 10px 20px 30px;
     outline: none;
     width: 80%;
+}
+
+.btn, .btn2 {
     @include themify {
-        background: theme("backgroundColor-secondary");
+    background: theme("backgroundColor-secondary");
     }
 }
+
 .center {
     align-content: center;
-}
+    }
 
 @include desktop-lg {
 
@@ -43,7 +44,7 @@
         height: 40px;
         margin: 0 10px 20px 30px;
         outline: none;
-        width: 80%;
+        width: 80%; 
         @include themify {
             background: theme("backgroundColor-main");
         }
@@ -63,8 +64,9 @@
             background: theme("backgroundColor-main");
         }
     }
+}
 
     .center {
         align-content: center;
     }
-}
+
