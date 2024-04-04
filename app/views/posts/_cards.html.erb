@@ -1,7 +1,7 @@
 <div class="posts">
   <% @posts.each do |post| %>
     <div class="post">
-      <%= link_to edit_post_path(post.id) do%>
+      <%= link_to edit_post_path(post.id) do %>
         <div class="post-header">
           <div class="user">
             <%= post.user.image_profile.attached? ? image_tag(post.user.image_profile) : image_tag("avatar-default.webp") %>
@@ -14,19 +14,19 @@
         </div>
       <% end %>
       <div class="post-body">
-      <%= link_to user_path(post.user_id) do%>
+        <%= link_to user_path(post.user_id) do %>
           <%= post.body %>
-        </div>
-        <div class="post-images">
-          <% if post.images.attached? %>
-            <% post.images.each do |image| %>
-              <div>
-                <%= image_tag image.representation(resize_to_limit: [300, 300]) %>
-              </div>
-            <% end %>
+        <% end %>
+      </div>
+      <div class="post-images">
+        <% if post.images.attached? %>
+          <% post.images.each do |image| %>
+            <div>
+              <%= image_tag image.representation(resize_to_limit: [300, 300]) %>
+            </div>
           <% end %>
-        </div>
-      <% end %>
+        <% end %>
+      </div>
       <div class="post-footer">
         <div class="actions">
           <i class="bi bi-heart-fill"></i>
