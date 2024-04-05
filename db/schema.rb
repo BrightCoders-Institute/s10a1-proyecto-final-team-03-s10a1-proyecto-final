@@ -126,8 +126,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_03_22_000347) do
     t.string "uid"
     t.string "avatar_url"
     t.string "provider"
-    t.integer "following_count", default: 0
-    t.integer "followers_count", default: 0
     t.string "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
