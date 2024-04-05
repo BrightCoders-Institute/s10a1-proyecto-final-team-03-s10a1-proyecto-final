@@ -8,9 +8,11 @@
 }
 
 .form {
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin: 5%;
   padding: 5%;
 
   h2 {
@@ -48,61 +50,55 @@
   margin-top: 1rem;
 
   input, button,
-  &__warning button,
   &__danger button {
     border-radius: 50px;
+    border: none;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
     font-size: 20px;
     padding: 4px 3rem;
   }
 
-  &__warning, &__danger {
+  &__turbo-method {
     justify-content: space-between;
-    margin-top: 1rem;
+    margin: 0 0 2rem;
 
     button, form {
       width: 100%;
     }
+  }
+
+  &__danger button {
+    background-color: $danger-bg;
   }
 }
 
 .form .return {
   align-items: center;
   border-radius: 50px;
+  border: none;
+  box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
   display: flex;
   font-size: 20px;
   justify-content: center;
   padding: 0 3rem;
   text-decoration: none;
 
-  i {
+  i, i::before {
     font-size: 1.5rem;
-    padding-right: 0.5rem;
+    padding: 0 0.5rem;
   }
 }
 
 @include legacy-themify {
   .form {
+    background-color: theme('backgroundColor-tertiary');
+
     input {
-      background-color: theme('backgroundColor-tertiary');
-    }
-  
-    .actions__danger button {
-      background-color: darken(theme('backgroundColor-tertiary'), 0%);
-    }
-  
-    .return, .actions input, .actions button {
-      background-color: darken(theme('backgroundColor-main'), 10%);
-    }
-  
-    .actions__warning button {
-      background-color: darken(theme('backgroundColor-main'), 20%);
+      background-color: theme('backgroundColor-secondary');
     }
 
-    .actions__danger button,
-    .actions input, .return,
-    .actions button,
-    .actions__warning button {
-      border: 1px solid theme('colorInverted');
+    .return, .actions input, .actions button {
+      background-color: theme('backgroundColor-secondary');
     }
   
     .return, i, input,
@@ -110,7 +106,7 @@
     .actions__warning button,
     .actions input,
     .actions button {
-      color: theme('colorInverted');
+      color: theme('inputs-font-color');
     }
   }
 }
