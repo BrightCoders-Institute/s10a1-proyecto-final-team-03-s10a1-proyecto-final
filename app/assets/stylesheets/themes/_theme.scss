@@ -1,3 +1,5 @@
+$danger-bg: #ff7a7a;
+
 $main-color-light: #FEFCE8;
 $secondary-color-light: #EFEFEF;
 $tertiary-color-light: #D9D9D9;
@@ -15,6 +17,7 @@ $themes: (
     backgroundColor-tertiary: $tertiary-color-light,
     color: darken($color-dark, 10%),
     colorInverted: lighten($color-light, 10%),
+    inputs_font_color: $color-light,
   ),
   dark: (
     backgroundColor-main: $main-color-dark,
@@ -22,5 +25,6 @@ $themes: (
     backgroundColor-tertiary: $tertiary-color-dark,
     color: darken($color-light, 10%),
     colorInverted: darken($color-dark, 10%),
+    inputs-font-color: $color-light,
   ),
 );
