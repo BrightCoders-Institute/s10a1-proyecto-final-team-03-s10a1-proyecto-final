@@ -1,7 +1,7 @@
 <h2 class="mt-0"><%= title %></h2>
-<div class="form">
-  <%= form_with(model: @post) do |form| %>
+<div class="form_post">
 
+  <%= form_with(model: @post) do |form| %>
     <div class = "col_form">
       <%= form.label :body, style: "display: block"%>
       <%= form.text_field :body%>
@@ -27,8 +27,8 @@
         <% end %>
       <% end %>
     </div>
-  </div>
+</div>
 
-  <%= form.submit class: 'btn' %>
+<%= form.submit class: 'btn' %>
 
 <% end %>
