@@ -1,13 +1,17 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
 
-  # GET /users or /users.json
   def index
     @users = User.all
   end
 
-  # GET /users/1 or /users/1.json
   def show
+    @user = User.find(params[:id])
+    @follow = User.where(id: current_user.id)
+    @posts = @user.posts
+
+    # Filtramos los "me gusta" del usuario actual para las publicaciones del usuario en cuestión
+    @user_likes = @user.likes.where(post_id: @posts.pluck(:id)).index_by(&:post_id)
   end
 
   def new
@@ -22,7 +26,6 @@ class UsersController < ApplicationController
     @user.save
   end
 
-  # PATCH/PUT /users/1 or /users/1.json
   def update
     @user = current_user.update(user_params)
     redirect_to posts_path
@@ -30,12 +33,6 @@ class UsersController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
-  def set_user
-    @user = User.find(params[:id])
-  end
-
-  # Only allow a list of trusted parameters through.
   def user_params
     params.require(:user).permit(:name, :lastName, :birthday, :weight, :height, :email, :image_profile)
   end
