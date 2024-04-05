@@ -1,7 +1,7 @@
 <div class="posts">
   <% @posts.each do |post| %>
     <div class="post">
-      <%= link_to edit_post_path(post.id) do%>
+      <%= link_to edit_post_path(post.id) do %>
         <div class="post-header">
           <div class="user">
             <%= post.user.image_profile.attached? ? image_tag(post.user.image_profile) : image_tag("avatar-default.webp") %>
@@ -14,7 +14,9 @@
         </div>
       <% end %>
       <div class="post-body">
-        <%= post.body %>
+        <%= link_to user_path(post.user_id) do %>
+          <%= post.body %>
+        <% end %>
       </div>
       <div class="post-images">
         <% if post.images.attached? %>
