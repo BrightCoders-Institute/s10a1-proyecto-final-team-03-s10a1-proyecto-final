@@ -28,7 +28,7 @@
     gap: 4px;
   
     label {
-      font-size: 1.5rem;
+      font-size: 1rem;
     }
 
     i {
@@ -38,12 +38,7 @@
     input {
       border-radius: 50px;
       border: none;
-      padding: 0.5rem 1.5rem;
-      
-      @include themify {
-        background-color: theme('backgroundColor-tertiary');
-        color: theme('colorInverted');
-      }
+      padding: 10px 1.5rem;
     }
   }
 }
@@ -52,46 +47,20 @@
   justify-content: space-between;
   margin-top: 1rem;
 
-  input, button {
+  input, button,
+  &__warning button,
+  &__danger button {
     border-radius: 50px;
-    font-size: 1rem;
-    padding: 0.5rem 3rem;
-    
-    @include themify {
-      background-color: darken(theme('backgroundColor-main'), 10%);
-      border: 1px solid theme('colorInverted');
-      color: theme('colorInverted');
-    }
+    font-size: 20px;
+    padding: 4px 3rem;
   }
 
   &__warning, &__danger {
     justify-content: space-between;
     margin-top: 1rem;
 
-    button {
-      border-radius: 50px;
-      font-size: 1rem;
-      padding: 0.5rem 3rem;
-    }
-
     button, form {
       width: 100%;
-    }
-  }
-
-  &__warning button {
-    @include themify {
-      background-color: darken(theme('backgroundColor-main'), 20%);
-      border: 1px solid theme('colorInverted');
-      color: theme('colorInverted');
-    }
-  }
-
-  &__danger button {
-    @include themify {
-      background-color: darken(theme('backgroundColor-tertiary'), 0%);
-      border: 1px solid theme('colorInverted');
-      color: theme('colorInverted');
     }
   }
 }
@@ -100,22 +69,47 @@
   align-items: center;
   border-radius: 50px;
   display: flex;
-  font-size: 1rem;
+  font-size: 20px;
   justify-content: center;
   padding: 0 3rem;
   text-decoration: none;
 
-  @include themify {
-    background-color: darken(theme('backgroundColor-main'), 10%);
-    border: 1px solid theme('colorInverted');
-    color: theme('colorInverted');
-  }
-
   i {
     font-size: 1.5rem;
     padding-right: 0.5rem;
+  }
+}
 
-    @include themify {
+@include legacy-themify {
+  .form {
+    input {
+      background-color: theme('backgroundColor-tertiary');
+    }
+  
+    .actions__danger button {
+      background-color: darken(theme('backgroundColor-tertiary'), 0%);
+    }
+  
+    .return, .actions input, .actions button {
+      background-color: darken(theme('backgroundColor-main'), 10%);
+    }
+  
+    .actions__warning button {
+      background-color: darken(theme('backgroundColor-main'), 20%);
+    }
+
+    .actions__danger button,
+    .actions input, .return,
+    .actions button,
+    .actions__warning button {
+      border: 1px solid theme('colorInverted');
+    }
+  
+    .return, i, input,
+    .actions__danger button,
+    .actions__warning button,
+    .actions input,
+    .actions button {
       color: theme('colorInverted');
     }
   }
