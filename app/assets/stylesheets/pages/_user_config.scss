@@ -1,3 +1,21 @@
+.container__login {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.logo {
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 5%;
+
+  img {
+    height: 15rem;
+    width: 15rem;
+  }
+}
+
 .user-config {
   flex-direction: column;
   overflow: auto;
@@ -67,6 +85,15 @@
     }
   }
 
+  &__devise-links {
+    flex-direction: column;
+    gap: 1.5rem;
+
+    a {
+      font-size: 1rem;
+    }
+  }
+
   &__danger button {
     background-color: $danger-bg;
   }
@@ -90,6 +117,10 @@
 }
 
 @include legacy-themify {
+  .container__login {
+    background-color: theme('backgroundColor-main');
+  }
+
   .form {
     background-color: theme('backgroundColor-tertiary');
 
