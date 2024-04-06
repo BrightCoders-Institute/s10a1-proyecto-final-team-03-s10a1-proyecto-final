@@ -42,3 +42,26 @@ $breakpoint-sm: 480px;
     }
   }
 }
+
+@mixin legacy-themify($themes: $themes, $class-name: null) {
+  @each $theme, $map in $themes {
+    $theme-map: () !global;
+
+    @each $key, $value in $map {
+      $value: map-get(map-get($themes, $theme), '#{$key}');
+      $theme-map: map-merge($theme-map, ($key: $value)) !global;
+    }
+
+    @if $class-name {
+      .theme-#{$theme} .#{$class-name} {
+        @content;
+      }
+    } @else {
+      .theme-#{$theme} {
+        @content;
+      }
+    }
+
+    $theme-map: null !global;
+  }
+}
