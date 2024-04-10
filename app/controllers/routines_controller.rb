@@ -15,8 +15,7 @@ class RoutinesController < ApplicationController
     @routines = Routine.all
   end
 
-  def show
-  end
+  def show; end
 
   def edit
     return if current_user == @routine.user
