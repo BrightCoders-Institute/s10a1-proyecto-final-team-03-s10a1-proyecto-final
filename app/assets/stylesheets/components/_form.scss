@@ -56,16 +56,6 @@
     margin: 0 40px 0 40px;
 }
 
-.logo {
-    display: grid;
-    place-items: center;
-    
-    h1 {
-        font-family: 'Black Ops One', sans-serif;
-        font-weight: 100;        
-    }
-}
-
 .links {
     flex-direction: column;
 
@@ -86,16 +76,6 @@
 }
 
 @include desktop-lg {
-
-    .logo {
-        display: grid;
-        place-items: center;
-        
-        h1 {
-            font-family: 'Black Ops One', sans-serif;
-            font-weight: 100;           
-        }       
-    }
 
     .wrapper {      
         border-radius: 10px;
@@ -148,4 +128,19 @@
     .signuplabel {
         margin: 0 40px 0 40px;
     }
+}
+.form_post {
+    background-color: $tertiary-color-light;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    height: 60%;
+    margin: auto;
+    padding: 10px;
+    width: 90%;
+}
+
+.col_form {
+    flex-direction: column;
+    margin-top: 15%;
 }
