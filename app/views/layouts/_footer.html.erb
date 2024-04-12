@@ -2,14 +2,16 @@
   <%= link_to root_path do %>
     <i class="bi bi-house-fill"></i>
   <% end %>
-  <a href="">
+  <a>
     <i class="bi bi-search"></i>
   </a>
   <%= link_to new_post_path do %>
     <i class="bi bi-plus-square"></i>
   <% end %>
-  <a href="">
-    <i class="bi bi-heart-fill"></i>
+  <a>
+    <%= link_to routines_path do %>
+      <i class="bi bi-heart-fill"></i>
+    <% end %>
   </a>
   <%= link_to posts_path, class: 'current-user' do %>
     <%= image_tag('avatar-default.webp', alt: 'Current User') %>

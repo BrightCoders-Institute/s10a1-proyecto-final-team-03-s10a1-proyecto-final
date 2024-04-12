@@ -1,0 +1,9 @@
+<h2 class="mt-0"><%= title %></h2>
+<%= form_with(model: @routine) do |form| %>
+
+  <div>
+    <%= form.label :exercise, style: "display: block" %>
+    <%= form.text_field :exercise %>
+  </div>
+    <%= form.submit class: 'btn' %>
+<% end %>

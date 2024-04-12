@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :following, foreign_key: 'follower_user_id', class_name: 'Follower', dependent: :destroy
   has_many :likes
   has_many :comments
+  has_many :routines
 
   validates :image_profile,
             content_type: { in: %w[image/png image/jpg image/jpeg], message: 'must be an image',
