@@ -2,7 +2,6 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   connect() {
-    console.log('Me conecté');
     this.fileField = this.element.querySelector("input[type='file']");
     this.imagePreviewContainer = document.createElement("div");
     this.imagePreviewContainer.classList.add("image-preview-container");
@@ -59,6 +58,5 @@ export default class extends Controller {
       };
       reader.readAsDataURL(file);
     }
-    console.log('Imagenes previsualizadas');
   }
 }
