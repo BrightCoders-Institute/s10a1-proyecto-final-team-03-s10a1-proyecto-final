@@ -358,7 +358,7 @@ DEPENDENCIES
   devise
   dotenv
   error_highlight (>= 0.4.0)
-  image_processing (>= 1.2)
+  image_processing (~> 1.2)
   importmap-rails
   jbuilder
   omniauth

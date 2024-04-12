@@ -6,6 +6,7 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :comments
   has_many_attached :images
+  has_rich_text :body  
 
   validates :body, presence: true
   validates :images,

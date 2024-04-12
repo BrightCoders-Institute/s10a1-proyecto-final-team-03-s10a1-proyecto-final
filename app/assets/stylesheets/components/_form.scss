@@ -133,14 +133,19 @@
     background-color: $tertiary-color-light;
     border-radius: 10px;
     display: flex;
-    flex-direction: row;
-    height: 60%;
+    flex-direction: column;
+    margin-bottom: 25%;
     margin: auto;
+    min-height: 40%;
     padding: 10px;
     width: 90%;
 }
 
 .col_form {
     flex-direction: column;
-    margin-top: 15%;
+    margin: 15% 0 ;
+}
+
+.overflow{
+    overflow: auto;
 }
