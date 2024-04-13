@@ -1,30 +1,31 @@
-<h2 class="mt-0"><%= @title %></h2> 
+<h2 class="mt-0"><%= title %></h2>
 
-<%= form_with(model: @post , html:{class: 'overflow'}) do |form| %>
-  <%= form.label :body, style: "display: block" %>
-  <div class="rich-text-trix form_post">
-    <%= form.rich_text_area :body %>
-  </div>
-  <div class = "col_form">
-    <% if @post.images.attached? %> 
-      <%= form.label :images, "Upload a new image", style: "display: block" %>
-      <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true %>
-      <%= form.label :images, "Select images to delete", style: "display: block" %>
-      <% @post.images.each do |image| %>
-        <% if image.persisted? %>
-          <div>
-            <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
-            <%= check_box_tag "post[images_to_remove][]", image.signed_id, false, { id: "post_images_to_remove_#{image.signed_id}" } %>
-            <%= label_tag "post_images_to_remove_#{image.signed_id}", "Delete", style: "display: inline" %>
-            <%= image_tag url_for(image), width: 200 %> 
-          </div>
+<div data-controller="preview">
+  <%= form_with(model: @post , html:{class: 'overflow'}) do |form| %> 
+    <div class="rich-text-trix form_post">
+      <%= form.rich_text_area :body %>
+    </div>
+    <div class = "col_form">
+      <% if @post.images.attached? %> 
+        <%= form.label :images, "Upload a new image", style: "display: block" %>
+        <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true %>
+        <%= form.label :images, "Select images to delete", style: "display: block" %>
+        <% @post.images.each do |image| %>
+          <% if image.persisted? %>
+            <div>
+              <%= form.hidden_field :images, multiple: true, value: image.signed_id %>
+              <%= check_box_tag "post[images_to_remove][]", image.signed_id, false, { id: "post_images_to_remove_#{image.signed_id}" } %>
+              <%= label_tag "post_images_to_remove_#{image.signed_id}", "Delete", style: "display: inline" %>
+              <%= image_tag url_for(image), width: 200 %> 
+            </div>
+          <% end %>
         <% end %>
+      <% else %>
+        <%= form.label :images, "Upload your images", style: "display: block" %>
+        <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true %>
+        <div class="image-preview-container"></div>
       <% end %>
-    <% else %>
-      <%= form.label :images, "Upload your images", style: "display: block" %>
-      <%= form.file_field :images, accept: "image/jpg, image/jpeg, image/png", multiple: true %>
-    <% end %>
-  </div>
-  <%= form.submit class: 'btn' %>
-<% end %>
-
+    </div>
+    <%= form.submit class: 'btn' %>
+  <% end %>
+</div>
