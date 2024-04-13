@@ -1,0 +1,45 @@
+.modal {
+  border-radius: 5px;
+  box-shadow: 0 0 10px 0 rgba(0,0,0,0.2), 0 5px 10px 0 rgba(0,0,0,0.19);
+  overflow: auto;
+  padding: 2em;
+  position: fixed;
+  z-index: 101;
+  
+  &__list {
+    margin: 0;
+    padding: 0;
+
+    &-item {
+      display: flex;
+      justify-content: center;
+      padding: 4px;
+
+      & button, & a {
+        background: none;
+        border-radius: 0;
+        border: none;
+        margin: 0;
+        padding: 0 4px;
+      }
+    }
+  }
+}
+
+@include legacy-themify {
+  .modal {
+    background-color: theme('backgroundColor-main');
+
+    &__list {
+      &-item {
+        & a {
+          background-color: theme('backgroundColor-main');
+        }
+
+        & a:hover {
+          background-color: darken(theme('backgroundColor-main'), 10%);
+        }
+      }
+    }
+  }
+}
