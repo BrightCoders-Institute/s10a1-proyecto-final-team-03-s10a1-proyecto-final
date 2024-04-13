@@ -8,11 +8,9 @@
   <%= link_to new_post_path do %>
     <i class="bi bi-plus-square"></i>
   <% end %>
-  <a>
-    <%= link_to routines_path do %>
-      <i class="bi bi-heart-fill"></i>
-    <% end %>
-  </a>
+  <%= link_to routines_path do %>
+    <i class="bi bi-heart-fill"></i>
+  <% end %>
   <%= link_to posts_path, class: 'current-user' do %>
     <%= image_tag('avatar-default.webp', alt: 'Current User') %>
   <% end %>
