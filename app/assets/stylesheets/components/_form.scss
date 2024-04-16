@@ -7,13 +7,16 @@
 .wrapper {
     align-items: center;
     background: $tertiary-color-light;
-    border-radius: 30px;
-    color:$color-light;
+    border-radius: 15px;
     flex-direction: column;
-    height: 55%;
+    height: 60%;
     justify-content: center;
     margin: auto;
-    width: 75%;
+    width: 70%;
+    @include themify {
+        background: theme("backgroundColor-tertiary");
+        color: theme("colorInverted");
+    } 
 }
     
 .wrapper h2 {
@@ -40,7 +43,7 @@
 }
 
 .register-link p a {
-    color:$color-light;
+    color: $black;
     font-weight: 600;
     text-decoration: none;
 }
@@ -53,22 +56,13 @@
     margin: 0 40px 0 40px;
 }
 
-.logo {
-    display: grid;
-    place-items: center;
-    
-    h1 {
-        font-family: 'Black Ops One', sans-serif;
-        font-weight: 100;        
-    }
-}
-
 .links {
     flex-direction: column;
 
     &__devise {
         display: flex;
         gap: 1rem;
+        text-align: center;
         justify-content: space-between;
     }
 }
@@ -83,21 +77,14 @@
 
 @include desktop-lg {
 
-    .logo {
-        display: grid;
-        place-items: center;
-        
-        h1 {
-            font-family: 'Black Ops One', sans-serif;
-            font-weight: 100;           
-        }       
-    }
-
     .wrapper {      
-        background:$tertiary-color-light;
         border-radius: 10px;
-        color:$color-light;
         padding: 80px 20px ;
+        @include themify {
+            background: theme("backgroundColor-tertiary");
+            color: theme("colorInverted");
+        } 
+        
     }
     
     .wrapper h2 {
@@ -113,9 +100,10 @@
     }
     
     .remember-forgot label, check_box {
-        
-        accent-color:$color-light;
         margin: 10px 220px 10px 10px;
+        @include themify {
+            accent-color: theme("colorInverted");
+        } 
     
     }
     
@@ -126,9 +114,11 @@
     }
     
     .register-link p a {
-        color:$color-light;
         font-weight: 600;
         text-decoration: none;
+        @include themify {
+            color: theme("colorInverted");
+        } 
     }
     
     .register-link p a:hover {
@@ -138,4 +128,24 @@
     .signuplabel {
         margin: 0 40px 0 40px;
     }
+}
+.form_post {
+    background-color: $tertiary-color-light;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 25%;
+    margin: auto;
+    min-height: 40%;
+    padding: 10px;
+    width: 90%;
+}
+
+.col_form {
+    flex-direction: column;
+    margin: 15% 0 ;
+}
+
+.overflow{
+    overflow: auto;
 }

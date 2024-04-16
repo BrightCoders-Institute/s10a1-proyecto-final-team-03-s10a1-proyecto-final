@@ -1,0 +1,15 @@
+<h1 class="mt-0"><%= title %></h1>
+<%= form_with(model: @routine, html: { class: 'form' }) do |form| %>
+  <div class="field">
+    <%= form.label :exercise, 'Routine name' %>
+    <%= form.text_field :exercise, autofocus: true %>
+  </div>
+  <div class="btn__actions">
+    <%= form.submit submit, class: action_name == 'new' ? 'btn__actions__info' : '' %>
+  </div>
+<% end %>
+
+<%= link_to :back, class: "btn__extra" do %>
+  <i class="bi bi-arrow-left"></i>
+  Back
+<% end %>

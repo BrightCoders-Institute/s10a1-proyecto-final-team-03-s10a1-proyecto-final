@@ -1,0 +1,99 @@
+.routines-container {
+  flex-direction: column;
+  height: 100%;
+
+  h1 {
+    font-size: 3rem;
+    margin: 2rem 0 1rem;
+    text-align: center;
+  }
+
+  .form {
+    height: 90%;
+    gap: 2.5rem;
+
+    p {
+      font-size: 1.5rem;
+      margin: 2rem 0;
+      text-align: center;
+    }
+    
+    .extra {
+      padding: 4px 1rem;
+      
+      a {
+        font-size: 1rem;
+        text-align: center;
+        text-decoration: none;
+        width: 100%;
+      }
+
+      i, i::before {
+        padding: 0;
+      }
+
+      i:hover .modal, i::before:hover .modal {
+        display: block;
+        padding: 4px;
+
+        &__item-action a{
+          font-size: 1rem;
+          padding: 0 4px;
+        }
+      }
+
+      &.btn__actions__info {
+        width: inherit;
+      }
+    }
+
+    .modal {
+      padding: 0;
+      transform: translate(-70%, 16%);
+  
+      & > * {
+        font-size: 20px;
+      }
+  
+      & .btn__actions {
+        margin: 0;
+
+        &__turbo-method {
+          margin: 0;
+  
+          &:last-child button {
+            font-size: 20px;
+            height: 100%;
+          }
+        }
+      }
+    }
+  }
+
+  & > .btn__extra {
+    margin: 1rem 5% 3rem;
+  }
+}
+
+.routine {
+  padding: 0 1rem;
+
+  a {
+    margin: 0 1rem;
+    text-align: center;
+    width: 100%;
+  }
+
+  i, i::before {
+    padding: 0;
+  }
+}
+
+@include legacy-themify {
+  .form {
+    .action__create {
+      background-color: theme('backgroundColor-main');
+      color: theme('inputs-font-color');
+    }
+  }
+}

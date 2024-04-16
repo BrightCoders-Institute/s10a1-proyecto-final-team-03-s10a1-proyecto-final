@@ -1,14 +1,17 @@
 # frozen_string_literal: false
 
-# class Usermodel
 class User < ApplicationRecord
   has_one_attached :image_profile
   has_many :posts
+  has_many :followers, foreign_key: 'user_id', dependent: :destroy
+  has_many :following, foreign_key: 'follower_user_id', class_name: 'Follower', dependent: :destroy
+  has_many :likes
+  has_many :comments
+  has_many :routines
 
   validates :image_profile,
             content_type: { in: %w[image/png image/jpg image/jpeg], message: 'must be an image',
                             processable_image: true, aspect_ratio: :landscape }
-  has_many :likes
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
@@ -25,5 +28,13 @@ class User < ApplicationRecord
       user.save
     end
     user
+  end
+
+  def increment_followers
+    increment!(:followers_count)
+  end
+
+  def decrement_followers
+    decrement!(:followers_count)
   end
 end

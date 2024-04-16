@@ -1,14 +1,10 @@
-<%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
-
 <div class="posts">
   <% @posts.each do |post| %>
-    <%= link_to edit_post_path(post.id) do%>
-      <div class="post">
     <div class="post">
-      <%= link_to post_path(post.id) do%>
+      <%= link_to edit_post_path(post.id) do %>
         <div class="post-header">
           <div class="user">
-            <%= image_tag current_user.image_profile %>
+            <%= post.user.image_profile.attached? ? image_tag(post.user.image_profile) : image_tag("avatar-default.webp") %>
             <div>
               <h2><%= "#{post.user.name} #{post.user.lastName}" %></h2>
               <p><%= post.created_at.strftime("%d-%m-%Y a las %H:%M") %></p>
@@ -18,7 +14,9 @@
         </div>
       <% end %>
       <div class="post-body">
-        <%= post.body %>
+        <%= link_to user_path(post.user_id) do %>
+          <%= post.body %>
+        <% end %>
       </div>
       <div class="post-images">
         <% if post.images.attached? %>
@@ -39,5 +37,6 @@
     </div>
     <%= render partial: 'likes/like_button', locals: { post: post, user_likes: @user_likes, like: @like } %>
     <span class="likes-count"><%= post.likes_count %> likes</span>
+    <%= render 'comments/comment_form', post: post %>
   <% end %>
 </div>

@@ -6,10 +6,19 @@ Rails.application.routes.draw do
                sessions: 'users/sessions',
                omniauth_callbacks: 'users/omniauth_callbacks'
              }
-  resources :users
-  resources :posts
+
+  resources :users do
+    resources :followers, only: %i[create destroy show]
+  end
+
   resources :images
+
+  resources :routines
+
   resources :posts do
     resources :likes, only: %i[create destroy]
+    resources :comments, only: %i[create destroy] do
+      post 'reply', on: :collection
+    end
   end
 end

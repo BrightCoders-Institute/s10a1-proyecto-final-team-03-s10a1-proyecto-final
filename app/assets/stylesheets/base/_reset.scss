@@ -23,3 +23,13 @@ footer {
 img {
   user-select: none;
 }
+
+a, button, input[type="submit"] {
+  cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.hidden {
+  display: none;
+}

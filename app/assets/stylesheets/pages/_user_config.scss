@@ -1,0 +1,93 @@
+.container__login {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.logo {
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 5%;
+
+  img {
+    height: 15rem;
+    width: 15rem;
+  }
+}
+
+.user-config {
+  flex-direction: column;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.form {
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin: 1rem 5%;
+  padding: 5%;
+
+  h2 {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .field {
+    flex-direction: column;
+    gap: 4px;
+  
+    label {
+      font-size: 1rem;
+    }
+
+    i {
+      font-size: 0.8rem;
+    }
+  
+    input {
+      border-radius: 50px;
+      border: none;
+      padding: 10px 1.5rem;
+    }
+  }
+
+  & .btn {
+    &__actions {
+      margin: 1rem auto 0;
+      
+      &__turbo-method {
+        margin: 0 0 2rem;
+
+        &:last-child {
+          margin: 0 0 1rem;
+        }
+      }
+    }
+
+  }
+}
+
+@include legacy-themify {
+  .container__login {
+    background-color: theme('backgroundColor-main');
+  }
+
+  .form {
+    background-color: theme('backgroundColor-tertiary');
+
+    input:not([type="submit"]) {
+      background-color: theme('backgroundColor-secondary');
+    }
+  }
+}

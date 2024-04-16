@@ -1,8 +1,7 @@
 .btn {
     align-items: center;
-    background:$secondary-color-light;
     border-radius: 40px;
-    border: none;
+    border: black solid 1px;
     cursor: pointer;
     font-size: 16px;
     font-weight: 600;
@@ -13,7 +12,6 @@
 }
 
 .btn2 {
-    background:$secondary-color-light;
     border-radius: 40px;
     border: none;
     cursor: pointer;
@@ -24,14 +22,20 @@
     outline: none;
     width: 80%;
 }
+
+.btn, .btn2 {
+    @include themify {
+    background: theme("backgroundColor-secondary");
+    }
+}
+
 .center {
     align-content: center;
-}
+    }
 
 @include desktop-lg {
 
     .btn {
-        background: $main-color-light;
         border-radius: 40px;
         border: none;
         cursor: pointer;
@@ -40,11 +44,13 @@
         height: 40px;
         margin: 0 10px 20px 30px;
         outline: none;
-        width: 80%;
+        width: 80%; 
+        @include themify {
+            background: theme("backgroundColor-main");
+        }
     }
 
     .btn2 {
-        background: $main-color-light;
         border-radius: 40px;
         border: none;
         color: #333;
@@ -54,9 +60,92 @@
         height: 40px;
         outline: none;
         width: 80%; 
+        @include themify {
+            background: theme("backgroundColor-main");
+        }
+    }
+}
+
+.center {
+    align-content: center;
+}
+
+.btn {
+  &__extra {
+    align-items: center;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+    font-size: 20px;
+    justify-content: center;
+    padding: 0 3rem;
+    text-decoration: none;
+  
+    i, i::before {
+      font-size: 1.5rem;
+      padding: 0 0.5rem;
+    }
+  }
+  
+  &__actions {
+    border-radius: 50px;
+    justify-content: space-between;
+  
+    input, button,
+    &__danger button {
+      border-radius: 50px;
+      border: none;
+      box-shadow: 0 10px 10px 0 rgba(0, 0, 0, 0.2);
+      font-size: 20px;
+      padding: 4px 3rem;
+    }
+  
+    &__turbo-method {
+      justify-content: space-between;
+  
+      button, form {
+        width: 100%;
+      }
+    }
+  
+    &__devise-links {
+      flex-direction: column;
+      gap: 1.5rem;
+  
+      a {
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+
+@include legacy-themify {
+  .btn {
+    &__extra {
+      background-color: theme('backgroundColor-secondary');
+      
+      a, i, &{
+        color: theme('inputs-font-color');
+      }
     }
 
-    .center {
-        align-content: center;
+    
+    &__actions {
+      background-color: theme('backgroundColor-secondary');
+
+      &__danger {
+        background-color: $danger-bg;
+      }
+
+      &__info, &__info input, &__info button {
+        background-color: $info-bg;
+      }
+
+      &__info, &__danger {
+        color: $white;
+      }
     }
+  }
 }
