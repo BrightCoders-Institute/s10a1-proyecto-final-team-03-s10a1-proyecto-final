@@ -1,14 +1,30 @@
-<%= link_to 'Create routine', new_routine_path, class: 'btn' %>
+<div class="routines-container">
+  <h1>Routines</h1>
+  <div class="form">
+    <% if @routines.any? %>
+      <% @routines.each do |routine| %>
+        <div class="routine btn__extra" data-controller="modal">
+          <%= link_to truncate(routine.exercise, length: 23), routine_path(routine.id) %>
+          <i class="bi bi-three-dots-vertical" data-action="click->modal#openModal">
+            <div class="modal hidden" data-modal-target="modal">
+              <ul class="modal__list">
+                <li class="modal__list-item">
+                  <%= link_to 'Edit', edit_routine_path(routine.id), class: 'btn__actions' %>
+                </li>
+                <li class="modal__list-item btn__actions__turbo-method">
+                  <%= button_to "Delete", routine_path(routine.id),
+                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                    method: :delete, class: 'btn__actions__danger' %>
+                </li>
+              </ul>
+            </div>
+          </i>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No routines were found.</p>
+    <% end %>
 
-<% if @routines.any? %>
-  <% @routines.each do |routine| %>
-      <h1>User:<%= routine.user.name %> Exercise:<%= routine.exercise %> </h1>
-    <div class="actions">
-        <%= link_to 'Edit Routine', edit_routine_path(routine.id), class: 'btn' %>
-        <%= link_to 'See Routine', routine_path(routine.id), class: 'btn' %>
-        <%= button_to 'Delete Routine', routine_path(routine.id), class: 'btn', method: :delete %>
-    </div>
-  <% end %>
-<% else %>
-  <p>No routines were found.</p>
-<% end %>
+    <%= link_to 'Create routine', new_routine_path, class: 'btn__actions btn__extra btn__actions__info' %>
+  </div>
+</div>

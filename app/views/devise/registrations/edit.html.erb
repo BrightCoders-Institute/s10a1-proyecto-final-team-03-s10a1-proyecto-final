@@ -32,7 +32,7 @@
       <%= form.file_field :image_profile, accept: "image/jpg, image/jpeg, image/png", required: true %>
     </div>
 
-    <div class="actions">
+    <div class="btn__actions">
       <%= form.submit "Save Changes" %>
     </div>
   <% end %>
@@ -69,24 +69,24 @@
       <%= f.password_field :current_password, autocomplete: "current-password", required: true %>
     </div>
 
-    <div class="actions">
+    <div class="btn__actions">
       <%= f.submit "Update" %>
     </div>
   <% end %>
 
   <div class="form">
-    <%= link_to :back, class: "return" do %>
+    <%= link_to :back, class: "btn__extra" do %>
       <i class="bi bi-arrow-left"></i>
       Back
     <% end %>
 
     <h2>Extras</h2>
-    <div class="actions actions__turbo-method">
+    <div class="btn__actions btn__actions__turbo-method">
       <%= button_to "Sign Out", destroy_user_session_path, method: :delete %>
     </div>
 
-    <div class="actions__danger actions__turbo-method">
-      <%= button_to "Delete my account", registration_path(resource_name), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    <div class="btn__actions btn__actions__turbo-method">
+      <%= button_to "Delete my account", registration_path(resource_name), data: { turbo_method: :delete, turbo_confirm: "Are you sure?" }, class: 'btn__actions__danger' %>
     </div>
   </div>
 </div>

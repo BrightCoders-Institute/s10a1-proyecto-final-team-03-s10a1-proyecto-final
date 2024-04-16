@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css?family=Black+Ops+One");
 
 @import
-'themes/theme';
+     'themes/theme';
 
 @import 
      'abstracts/variables',
@@ -20,6 +20,7 @@
 @import
      'components/icons',
      'components/posts',
+     'components/modal',
      'components/buttons',
      'components/form',
      'components/input';
@@ -27,6 +28,7 @@
 @import
      'pages/user_config',
      'pages/feed',
+     'pages/routines',
      'pages/profile';
 
 @import
