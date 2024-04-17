@@ -1,0 +1,17 @@
+<div style="display:flex;">
+  <div style="margin-right: 20px;">
+    <h3><%= exercise.repetitions %></h3>
+  </div>      
+  <div style="margin-right: 20px;">
+    <h3><%= exercise.weight %></h3>
+  </div>
+  <div style="margin-right: 20px;">
+    <%= link_to 'Edit', edit_routine_series_exercise_path(@routine, serie, exercise), class: 'btn__actions' %>
+  </div>
+  <div style="margin-right: 20px;">
+    <%= button_to 'Delete', routine_series_exercise_path(@routine, serie, exercise),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                method: :delete, class: 'btn__actions__danger' %>
+  </div>  
+</div>
+ 
