@@ -33,22 +33,34 @@
 
 <%= render 'main/histories' %>
 
-<div class="profile-sections">
+<div class="profile-sections" data-controller="profile">
   <div class="profile-sections__item">
-    <i class="bi bi-house-fill"></i>
+    <i class="bi bi-house-fill post"></i>
   </div>
   <span></span>
   <div class="profile-sections__item">
-    <i class="bi bi-camera-reels-fill"></i>
+    <i class="bi bi-camera-reels-fill video"></i>
   </div>
   <span></span>
   <div class="profile-sections__item">
-    <i class="bi bi-image-fill"></i>
+    <i class="bi bi-image-fill image_post"></i>
   </div>
 </div>
 
-<div class="profile-main">
+<div class="profile-main posts" data-controller="profile">
   <% @users.each_with_index do |user, idx| %>
     <%= render partial: 'cards', locals: {user: user} if current_user.id == user.id %>
+  <% end %>
+</div>
+
+<div class="post-images images_post" data-controller="profile">
+  <% @posts.each do |post| %>
+    <% if post.images.attached? %>
+      <% post.images.each do |image| %>
+        <div>
+          <%= image_tag image.representation(resize_to_limit: [300, 300]) %>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
