@@ -21,6 +21,7 @@ export default class extends Controller {
     });
 
     post.addEventListener("click", (e) => {
+      e.preventDefault()
       posts.classList.remove("hidden");
       images.classList.add("hidden");
     });
