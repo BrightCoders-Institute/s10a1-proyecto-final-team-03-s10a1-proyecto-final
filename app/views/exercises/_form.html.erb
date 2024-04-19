@@ -1,0 +1,18 @@
+<h1 class="mt-0"><%= title %></h1>
+<%= form_with(model: @exercise, url: @exercise.persisted? ? routine_series_exercise_path(@routine, @series, @exercise) : routine_series_exercises_path(@routine, @series), html: { class: 'form' }) do |form| %>
+  <div class="field">
+    <%= form.label :repetitions %>
+    <%= form.number_field :repetitions, autofocus: true %>
+
+    <%= form.label 'Weight' %>
+    <%= form.number_field :weight, autofocus: true %>
+  </div>
+  <div class="btn__actions">
+    <%= form.submit submit, class: action_name == 'new' ? 'btn__actions__info' : '' %>
+  </div>
+<% end %>
+
+<%= link_to :back, class: "btn__extra" do %>
+  <i class="bi bi-arrow-left"></i>
+  Back
+<% end %>

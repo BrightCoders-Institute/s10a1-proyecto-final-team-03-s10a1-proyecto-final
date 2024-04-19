@@ -13,7 +13,11 @@ Rails.application.routes.draw do
 
   resources :images
 
-  resources :routines
+  resources :routines do
+    resources :series do
+      resources :exercises
+    end
+  end
 
   resources :posts do
     resources :likes, only: %i[create destroy]

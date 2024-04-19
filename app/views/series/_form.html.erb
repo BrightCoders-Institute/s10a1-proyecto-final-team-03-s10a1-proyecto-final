@@ -1,8 +1,8 @@
 <h1 class="mt-0"><%= title %></h1>
-<%= form_with(model: @routine, html: { class: 'form' }) do |form| %>
+<%= form_with(model: @series, url: @series.persisted? ? routine_series_path(@routine, @series) : routine_series_index_path(@routine), html: { class: 'form' }) do |form| %>
   <div class="field">
-    <%= form.label 'Routine name' %>
-    <%= form.text_field :exercise, autofocus: true %>
+    <%= form.label 'Series name' %>
+    <%= form.text_field :name, autofocus: true %>
   </div>
   <div class="btn__actions">
     <%= form.submit submit, class: action_name == 'new' ? 'btn__actions__info' : '' %>

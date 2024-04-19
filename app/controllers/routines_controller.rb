@@ -12,7 +12,7 @@ class RoutinesController < ApplicationController
   end
 
   def index
-    @routines = Routine.all
+    @routines = current_user.routines.order(created_at: :asc)
   end
 
   def show; end
@@ -20,13 +20,13 @@ class RoutinesController < ApplicationController
   def edit
     return if current_user == @routine.user
 
-    redirect_to root_path, alert: 'You are not authorized to edit this post.',
+    redirect_to root_path, alert: 'You are not authorized to edit this routine.',
                            status: :unauthorized
   end
 
   def update
     unless current_user == @routine.user
-      redirect_to root_path, alert: 'You are not authorized to update this post.',
+      redirect_to root_path, alert: 'You are not authorized to update this routine.',
                              status: :unauthorized
     end
 
@@ -43,6 +43,8 @@ class RoutinesController < ApplicationController
 
   def set_routine
     @routine = Routine.find(params[:id])
+    @series = @routine.series
+    @exercises = @series.map(&:exercises).flatten.uniq
   end
 
   def post_params

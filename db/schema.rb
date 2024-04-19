@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_11_233152) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_17_005956) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -64,6 +64,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_11_233152) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
+  create_table "exercises", force: :cascade do |t|
+    t.integer "repetitions"
+    t.float "weight"
+    t.bigint "series_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["series_id"], name: "index_exercises_on_series_id"
+  end
+
   create_table "followers", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "follower_user_id"
@@ -111,11 +120,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_11_233152) do
   end
 
   create_table "series", force: :cascade do |t|
-    t.integer "repetitions"
-    t.float "weight"
     t.bigint "routine_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
     t.index ["routine_id"], name: "index_series_on_routine_id"
   end
 
@@ -151,6 +159,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_11_233152) do
   add_foreign_key "comments", "comments", column: "parent_comment_id"
   add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "exercises", "series", on_delete: :cascade
   add_foreign_key "followers", "users"
   add_foreign_key "followers", "users", column: "follower_user_id"
   add_foreign_key "likes", "posts"
@@ -159,5 +168,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_11_233152) do
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "routines", "users"
-  add_foreign_key "series", "routines"
+  add_foreign_key "series", "routines", on_delete: :cascade
 end
