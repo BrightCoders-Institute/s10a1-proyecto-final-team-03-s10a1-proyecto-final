@@ -129,6 +129,7 @@
         margin: 0 40px 0 40px;
     }
 }
+
 .form_post {
     background-color: $tertiary-color-light;
     border-radius: 10px;
@@ -139,7 +140,12 @@
     min-height: 40%;
     padding: 10px;
     width: 90%;
+
+    .trix-content div{
+        display: block;
+    }
 }
+
 
 .col_form {
     flex-direction: column;

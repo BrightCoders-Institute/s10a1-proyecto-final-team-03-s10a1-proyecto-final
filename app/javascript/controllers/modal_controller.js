@@ -20,7 +20,7 @@ export default class extends Controller {
     const modal = this.modalTarget
 
     const lossFocus = modal.contains(event.target)
-    const isModalTrigger = event.target.closest(".bi-three-dots-vertical")
+    const isModalTrigger = event.target.closest(".uil-ellipsis-v")
 
     if (!lossFocus && !isModalTrigger) {
       modal.classList.add("hidden")

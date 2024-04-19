@@ -16,7 +16,7 @@
     font-size: 2rem;
   }
 
-  i {
+  a:last-child {
     margin-left: auto;
 
     @include themify {
