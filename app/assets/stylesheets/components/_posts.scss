@@ -8,7 +8,7 @@
   }
 }
 
-.post {
+.post:not(.profile-sections__item) {
   border-radius: 8px;
   flex-direction: column;
   margin-bottom: 1rem;
@@ -60,6 +60,12 @@
   }
 }
 
+.post-body {
+  div {
+    display: block;
+  }
+}
+
 .post-images {
   justify-content: center;
 
@@ -78,6 +84,13 @@
     align-items: center;
     justify-content: space-between;
     width: 100%;
+
+    .like-container button {
+      background-color: transparent;
+      border: none;
+      margin: 0;
+      padding: 0;
+    }
   }
 
   i {

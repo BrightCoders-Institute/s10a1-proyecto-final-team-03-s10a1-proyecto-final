@@ -1,3 +1,13 @@
+.profile-container {
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+  
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
 .profile-header {
   flex-direction: column;
   padding: 1rem 0 0;
@@ -93,9 +103,47 @@
 
 .profile-main {
   margin-bottom: auto;
-  overflow: auto;
-  
-  &::-webkit-scrollbar {
-    display: none;
+
+  &.images_post {
+    display: grid;
+    grid-auto-flow: row dense;
+    grid-gap: 8px;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 2%;
+
+    @include mobile {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include desktop-lg {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    @include desktop-xl {
+      grid-template-columns: repeat(6, 1fr);
+    }
+  }
+    
+  &__image {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+
+    img {
+      height: 100%;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    &:last-child {
+      margin-bottom: 1rem;
+    }
+  }
+
+  &.posts {
+    overflow: visible;
   }
 }
