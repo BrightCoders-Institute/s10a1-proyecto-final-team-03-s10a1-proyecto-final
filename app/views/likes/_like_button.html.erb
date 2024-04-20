@@ -1,10 +1,14 @@
 <% if @user_likes[post.id] %>
-  <%= form_with(model: @user_likes[post.id], url: post_like_path(post, @user_likes[post.id]), method: :delete) do |form| %>
+  <%= form_with(model: @user_likes[post.id], url: post_like_path(post, @user_likes[post.id], method: :delete), html: { class: 'like-container' }) do |form| %>
     <%= form.hidden_field :id %>
-    <%= form.submit "Unlike", class: "btn" %>
+    <%= form.button type: :submit do %>
+      <i class="uil uil-heart-break"></i>
+    <% end %>
   <% end %>
 <% else %>
-  <%= form_with(model: @like, url: post_likes_path(post), method: :post) do |form| %>
-    <%= form.submit "Like", class: "btn" %>
+  <%= form_with(model: @like, url: post_likes_path(post), method: :post, html: { class: 'like-container' }) do |form| %>
+    <%= form.button type: :submit do %>
+      <i class="uil uil-heart"></i>
+    <% end %>
   <% end %>
 <% end %>

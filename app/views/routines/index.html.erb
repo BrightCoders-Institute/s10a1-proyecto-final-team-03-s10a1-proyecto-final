@@ -5,7 +5,7 @@
       <% @routines.each do |routine| %>
         <div class="routine btn__extra" data-controller="modal">
           <%= link_to truncate(routine.exercise, length: 23), routine_path(routine.id) %>
-          <i class="bi bi-three-dots-vertical" data-action="click->modal#openModal">
+          <i class="uil uil-ellipsis-v" data-action="click->modal#openModal">
             <div class="modal hidden" data-modal-target="modal">
               <ul class="modal__list">
                 <li class="modal__list-item">
