@@ -1,4 +1,4 @@
-<div class="" data-controller="follow">
+<div data-controller="follow">
   <%= form_with(model: Follower.new, url: user_followers_url(user), method: :post, class: "form-f") do |form| %>
     <%= form.hidden_field :follower_user_id, value: current_user.id %>
     <div class="btn__actions btn__actions__info">
