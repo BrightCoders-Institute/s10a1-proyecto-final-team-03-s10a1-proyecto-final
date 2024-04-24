@@ -1,24 +1,23 @@
 <div class="routines-container">
   <h1>Routines</h1>
-  <div class="form">
+  <div class="form" data-controller="modal">
     <% if @routines.any? %>
       <% @routines.each do |routine| %>
-        <div class="routine btn__extra" data-controller="modal">
+        <div class="routine btn__extra">
           <%= link_to truncate(routine.exercise, length: 23), routine_path(routine.id) %>
-          <i class="uil uil-ellipsis-v" data-action="click->modal#openModal">
-            <div class="modal hidden" data-modal-target="modal">
-              <ul class="modal__list">
-                <li class="modal__list-item">
-                  <%= link_to 'Edit', edit_routine_path(routine.id), class: 'btn__actions' %>
-                </li>
-                <li class="modal__list-item btn__actions__turbo-method">
-                  <%= button_to "Delete", routine_path(routine.id),
-                    data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                    method: :delete, class: 'btn__actions__danger' %>
-                </li>
-              </ul>
-            </div>
-          </i>
+          <i class="uil uil-ellipsis-v btn__modal" data-target="openModal-<%= routine.id %>"></i>
+          <dialog class="modal" id="modal-<%= routine.id %>">
+            <ul class="modal__list">
+              <li class="modal__list-item">
+                <%= link_to 'Edit', edit_routine_path(routine.id), class: 'btn__actions' %>
+              </li>
+              <li class="modal__list-item btn__actions__turbo-method">
+                <%= button_to "Delete", routine_path(routine.id),
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                  method: :delete, class: 'btn__actions__danger' %>
+              </li>
+            </ul>
+          </dialog>
         </div>
       <% end %>
     <% else %>

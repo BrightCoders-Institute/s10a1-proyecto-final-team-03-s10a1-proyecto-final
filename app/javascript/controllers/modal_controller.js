@@ -2,28 +2,20 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="modal"
 export default class extends Controller {
-  static targets = ["modal"]
-
   connect() {
-    document.addEventListener('click', this.closeModal.bind(this))
-  }
+    const triggerButtons = document.querySelectorAll(".btn__modal")
 
-  disconnect() {
-    document.removeEventListener('click', this.closeModal.bind(this))
-  }
+    triggerButtons.forEach((button) => {
+      let id = button.getAttribute("data-target").split("-")[1]
+      let modal = document.getElementById(`modal-${id}`)
 
-  openModal() {
-    this.modalTarget.classList.toggle("hidden")
-  }
+      button.addEventListener("click", () => {
+        console.log(button + " clicked");
+        modal.showModal()
+        modal.focus()
+      })
 
-  closeModal(event) {
-    const modal = this.modalTarget
-
-    const lossFocus = modal.contains(event.target)
-    const isModalTrigger = event.target.closest(".uil-ellipsis-v")
-
-    if (!lossFocus && !isModalTrigger) {
-      modal.classList.add("hidden")
-    }
+      modal.addEventListener("click", modal.close)
+    })
   }
 }

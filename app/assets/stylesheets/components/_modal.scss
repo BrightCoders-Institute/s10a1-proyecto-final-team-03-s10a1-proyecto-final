@@ -1,9 +1,11 @@
 .modal {
   border-radius: 5px;
+  border: none;
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.2), 0 5px 10px 0 rgba(0,0,0,0.19);
   overflow: auto;
-  padding: 2em;
+  padding: 1rem;
   position: fixed;
+  width: 50%;
   z-index: 101;
   
   &__list {
@@ -11,6 +13,7 @@
     padding: 0;
 
     &-item {
+      border-radius: 5px;
       display: flex;
       justify-content: center;
       padding: 4px;
@@ -18,11 +21,34 @@
       & button, & a {
         background: none;
         border-radius: 0;
+        border-radius: 5px;
         border: none;
+        font-size: 20px;
         margin: 0;
         padding: 0 4px;
+
+        &:focus-visible {
+          outline: none;
+        }
       }
     }
+  }
+
+  .btn__actions {
+    margin: 0;
+
+    &__turbo-method {
+      margin: 0;
+
+      &:last-child button {
+        font-size: 20px;
+        height: 100%;
+      }
+    }
+  }
+
+  &:focus-visible {
+    outline: none;
   }
 }
 

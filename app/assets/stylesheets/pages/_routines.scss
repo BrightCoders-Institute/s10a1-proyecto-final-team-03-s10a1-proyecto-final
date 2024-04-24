@@ -46,28 +46,6 @@
         width: inherit;
       }
     }
-
-    .modal {
-      padding: 0;
-      transform: translate(-70%, 16%);
-  
-      & > * {
-        font-size: 20px;
-      }
-  
-      & .btn__actions {
-        margin: 0;
-
-        &__turbo-method {
-          margin: 0;
-  
-          &:last-child button {
-            font-size: 20px;
-            height: 100%;
-          }
-        }
-      }
-    }
   }
 
   & > .btn__extra {
