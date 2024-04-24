@@ -1,5 +1,5 @@
 <% if @user_likes[post.id] %>
-  <%= form_with(model: @user_likes[post.id], url: post_like_path(post, @user_likes[post.id], method: :delete), html: { class: 'like-container' }) do |form| %>
+  <%= form_with(model: @user_likes[post.id], url: post_like_path(post, @user_likes[post.id]), method: :delete, html: { class: 'like-container' }) do |form| %>
     <%= form.hidden_field :id %>
     <%= form.button type: :submit do %>
       <i class="uil uil-heart-break"></i>

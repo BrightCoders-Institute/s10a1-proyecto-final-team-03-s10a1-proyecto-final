@@ -1,10 +1,14 @@
-<div data-controller="follow">
+<div class="" data-controller="follow">
   <%= form_with(model: Follower.new, url: user_followers_url(user), method: :post, class: "form-f") do |form| %>
     <%= form.hidden_field :follower_user_id, value: current_user.id %>
-    <%= form.submit "Unfollow", class: "btn follow" %>
+    <div class="btn__actions btn__actions__info">
+      <%= form.submit "Unfollow", class: "follow" %>
+    </div>
   <% end %>
 
   <%= form_with(model: @follow, url: user_follower_url(user, @follow), method: :delete, class: "form-u",) do |form| %>
-    <%= form.submit "Follow", class: "btn unfollow" %>
+    <div class="btn__actions btn__actions__info">
+      <%= form.submit "Follow", class: "unfollow" %>
+    </div>
   <% end %>
 </div>
