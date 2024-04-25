@@ -117,6 +117,11 @@
         font-size: 1rem;
       }
     }
+
+    .unfollow, .follow {
+      font-size: 1rem;
+      padding: 4px 8px;
+    }
   }
 }
 
@@ -143,7 +148,9 @@
         background-color: $info-bg;
       }
 
-      &__info, &__danger {
+      &__info, &__danger,
+      &__info button, &__danger button,
+      &__info input, &__danger input {
         color: $white;
       }
     }

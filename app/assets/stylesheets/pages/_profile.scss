@@ -9,7 +9,6 @@
 }
 
 .profile-header {
-  flex-direction: column;
   padding: 1rem 0 0;
 
   & > div:first-child {
@@ -34,11 +33,12 @@
 
   &__info {
     flex-direction: column;
-    padding: 0 1rem;
+    padding: 0 8px;
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 1rem;
       padding: 4px 0;
+      text-align: center;
     }
   }
 
@@ -52,13 +52,8 @@
     }
   }
 
-  .actions {
-    justify-content: space-between;
-    padding: 4px 0;
-
-    button {
-      margin: 0.5rem 0;
-    }
+  &__actions {
+    margin: 0 auto;
   }
 
   .histories {
