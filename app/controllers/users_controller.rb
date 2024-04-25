@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @follow = User.where(id: current_user.id)
-    @posts = @user.posts
+    @posts = @user.posts.order(created_at: :desc)
 
     # Filtramos los "me gusta" del usuario actual para las publicaciones del usuario en cuestión
     @user_likes = @user.likes.where(post_id: @posts.pluck(:id)).index_by(&:post_id)

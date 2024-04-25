@@ -1,17 +1,28 @@
-<div class="posts">
+<div class="posts" data-controller="modal">
   <% @posts.each do |post| %>
     <div class="post">
-      <%= link_to user_path(post.user_id) do %>
-        <div class="post-header">
-          <div class="user">
-            <%= post.user.image_profile.attached? ? image_tag(post.user.image_profile) : image_tag("avatar-default.webp") %>
-            <div>
-              <h2><%= "#{post.user.name} #{post.user.lastName}" %></h2>
-              <p><%= post.created_at.strftime("%d-%m-%Y a las %H:%M") %></p>
-            </div>
+      <div class="post-header">
+        <%= link_to user_path(post.user_id), class: 'user' do %>
+          <%= post.user.image_profile.attached? ? image_tag(post.user.image_profile) : image_tag("avatar-default.webp") %>
+          <div>
+            <h2><%= "#{post.user.name} #{post.user.lastName}" %></h2>
+            <p><%= post.created_at.strftime("%d-%m-%Y a las %H:%M") %></p>
           </div>
-        </div>
-      <% end %>
+        <% end %>
+        <i class="uil uil-ellipsis-v btn__modal" data-target="openModal-<%= post.id %>"></i>
+        <dialog class="modal" id="modal-<%= post.id %>">
+          <ul class="modal__list">
+            <li class="modal__list-item">
+              <%= link_to 'Edit', edit_post_path(post.id), class: 'btn__actions' %>
+            </li>
+            <li class="modal__list-item btn__actions__turbo-method">
+              <%= button_to "Delete", post_path(post.id),
+                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                method: :delete, class: 'btn__actions__danger' %>
+            </li>
+          </ul>
+        </dialog>
+      </div>
       <%= link_to post_path(post.id) do %>
         <div class="post-body">
           <%= post.body %>
