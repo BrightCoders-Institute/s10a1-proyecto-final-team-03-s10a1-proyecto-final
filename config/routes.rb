@@ -11,6 +11,8 @@ Rails.application.routes.draw do
     resources :followers, only: %i[create destroy show]
   end
 
+  resources :streaks, only: %i[show]
+
   resources :images
 
   resources :routines do
