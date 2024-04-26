@@ -168,5 +168,5 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_17_005956) do
   add_foreign_key "messages", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "routines", "users"
-  add_foreign_key "series", "routines", on_delete: :cascade
+  add_foreign_key "series", "routines"
 end

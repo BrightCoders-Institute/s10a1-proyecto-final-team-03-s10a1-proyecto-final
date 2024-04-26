@@ -1,16 +1,30 @@
-<div style="display:flex;">
-  <div style="margin-right: 20px;">
-    <h3><%= exercise.repetitions %></h3>
-  </div>      
-  <div style="margin-right: 20px;">
-    <h3><%= exercise.weight %></h3>
-  </div>
-  <div style="margin-right: 20px;">
-    <%= link_to 'Edit', edit_routine_series_exercise_path(@routine, serie, exercise), class: 'btn__actions' %>
-  </div>
-  <div style="margin-right: 20px;">
-    <%= button_to 'Delete', routine_series_exercise_path(@routine, serie, exercise),
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                method: :delete, class: 'btn__actions__danger' %>
-  </div>  
-</div>
+<table data-controller="green_set">
+    <tr class="serie_content">
+        <td>
+            <h3><%= exercise.repetitions %></h3>
+        </td>
+        <td>
+            <h3><%= exercise.weight %></h3>
+        </td>
+        <td>
+            <div class="checkbox-wrapper-44 miCheckbox">
+              <label class="toggleButton">
+                <input type="checkbox">
+                <div>
+                  <svg viewBox="0 0 44 44">
+                    <path d="M14,24 L21,31 L39.7428882,11.5937758 C35.2809627,6.53125861 30.0333333,4 24,4 C12.95,4 4,12.95 4,24 C4,35.05 12.95,44 24,44 C35.05,44 44,35.05 44,24 C44,19.3 42.5809627,15.1645919 39.7428882,11.5937758" transform="translate(-2.000000, -2.000000)"></path>
+                  </svg>
+                </div>
+              </label>
+            </div>
+        </td>
+        <td>
+            <%= link_to 'Edit', edit_routine_series_exercise_path(@routine, serie, exercise), class: 'btn__actions' %>
+        </td>
+        <td>
+            <%= button_to 'Delete', routine_series_exercise_path(@routine, serie, exercise),
+                        data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                        method: :delete, class: 'btn__actions__danger' %>
+        </td>
+    </tr>
+</table>

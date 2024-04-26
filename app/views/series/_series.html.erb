@@ -1,21 +1,19 @@
-<div class="series">
-  <div>    
-    <div class="routine btn__extra" data-controller="modal">
-      <h3><%= series.name %></h3>
-      <i class="bi bi-three-dots-vertical" data-action="click->modal#openModal">
-        <div class="modal hidden" data-modal-target="modal">
-          <ul class="modal__list">
-            <li class="modal__list-item">
-              <%= link_to 'Edit', edit_routine_series_path(@routine, series.id), class: 'btn__actions' %>
-            </li>
-            <li class="modal__list-item btn__actions__turbo-method">
-              <%= button_to 'Delete', routine_series_path(@routine, series.id),
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                method: :delete, class: 'btn__actions__danger' %>
-            </li>
-          </ul>
-        </div>
-      </i> 
-    </div>
+<div class="tittle_exercise">   
+  <div class="routine btn__extra tittle_routine" data-controller="modal">
+    <h3><%= series.name %></h3>
+    <i class="uil uil-ellipsis-v " data-action="click->modal#openModal">
+      <div class="modal hidden" data-modal-target="modal">
+        <ul class="modal__list">
+          <li class="modal__list-item">
+            <%= link_to 'Edit', edit_routine_series_path(@routine, series.id), class: 'btn__actions' %>
+          </li>
+          <li class="modal__list-item btn__actions__turbo-method">
+            <%= button_to 'Delete', routine_series_path(@routine, series.id),
+              data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+              method: :delete, class: 'btn__actions__danger' %>
+          </li>
+        </ul>
+      </div>
+    </i> 
   </div>
 </div>
