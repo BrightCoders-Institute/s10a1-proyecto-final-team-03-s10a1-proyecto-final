@@ -79,6 +79,7 @@
 .series_container {
   background-color: $secondary-color-light ;
   border: solid $black 1px;
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -104,15 +105,29 @@
 }
 .tittle_exercise {
   margin: 4%;
-  padding: 10px;     
+  padding: 10px; 
+}
+.reps_weight{
+  margin-left: 3%;
+  h4{
+    margin-right: 5%;
+  }
+}    
+
+
+.rightpart{
+  width: 60%;
+  justify-content: space-between;
+}
+
+.leftpart{
+  width: 40%;
+  justify-content: space-around;
 }
 
 .serie_content {
   border-radius: 10px;
   border: solid $black 3px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between; 
   margin-bottom: 5%;
   padding: 1%;
 }
@@ -121,11 +136,6 @@
   background-color: $green-bg;
   transition: background-color 0.5s ease;
 }
-
-
-
-
-
 
 .checkbox-wrapper-44 input[type="checkbox"] {
   display: none;
