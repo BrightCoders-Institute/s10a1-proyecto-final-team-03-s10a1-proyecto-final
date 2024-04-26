@@ -103,26 +103,20 @@
     font-weight: lighter;
   }
 }
+
 .tittle_exercise {
   margin: 4%;
   padding: 10px; 
 }
-.reps_weight{
-  margin-left: 3%;
-  h4{
-    margin-right: 5%;
-  }
+
+.reps_weight {
+  justify-content: space-around;  
+  width: 40%;
 }    
 
-
-.rightpart{
+.checkbox_edit_delete {
   width: 60%;
   justify-content: space-between;
-}
-
-.leftpart{
-  width: 40%;
-  justify-content: space-around;
 }
 
 .serie_content {
