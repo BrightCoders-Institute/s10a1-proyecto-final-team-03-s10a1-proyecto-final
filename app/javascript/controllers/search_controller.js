@@ -6,11 +6,15 @@ export default class extends Controller {
     const data = await response.json();
 
     const users = data.users.map((element) => {
-      return element.name;
+      return [element.id, element.name];
     });
 
     const posts = data.posts.map((element) => {
-      return element.body.body.replace("<div>", "").replace("</div>", "");
+      return [
+        element.body.id,
+        element.body.body.replace("<div>", "").replace("</div>", ""),
+        "Post",
+      ];
     });
 
     let input = document.querySelector(".search_input");
@@ -22,18 +26,20 @@ export default class extends Controller {
       let input_search = e.target.value;
 
       let filteredUser = users.filter((element) =>
-        element.startsWith(input_search)
+        element[1].startsWith(input_search)
       );
 
       let filteredPost = posts.filter((element) =>
-        element.startsWith(input_search)
+        element[1].startsWith(input_search)
       );
 
       const content = [...filteredPost, ...filteredUser];
 
       content
-        ? (content_searched.innerHTML = content.map(
-            (element) => `<p>${element}</p>`
+        ? (content_searched.innerHTML = content.map((element) =>
+            element.length > 2
+              ? `<a href=/posts/${element[0]}>${element[1]}`
+              : `<a href=/users/${element[0]}>${element[1]}</a>`
           ))
         : (content_searched.innerHTML = `<p>User or Post does not exist</p>`);
     });
