@@ -1,23 +1,22 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
+  static targets = ["follow", "unfollow"];
+
   connect() {
-    const followbtn = document.querySelector(".follow");
-    const unfollowbtn = document.querySelector(".unfollow");
+    this.unfollowTarget.classList.add("hidden");
 
-    unfollowbtn.classList.add("hidden");
-
-    followbtn.addEventListener("click", (e) => {
+    this.followTarget.addEventListener("click", (e) => {
       e.preventDefault();
-      followbtn.classList.add("hidden");
-      unfollowbtn.classList.remove("hidden");
+      this.followTarget.classList.toggle("hidden");
+      this.unfollowTarget.classList.toggle("hidden");
       this.toggleFollow(".form-u", true);
     });
 
-    unfollowbtn.addEventListener("click", (e) => {
+    this.unfollowTarget.addEventListener("click", (e) => {
       e.preventDefault();
-      unfollowbtn.classList.add("hidden");
-      followbtn.classList.remove("hidden");
+      this.unfollowTarget.classList.toggle("hidden");
+      this.followTarget.classList.toggle("hidden");
       this.toggleFollow(".form-f", true);
     });
   }
