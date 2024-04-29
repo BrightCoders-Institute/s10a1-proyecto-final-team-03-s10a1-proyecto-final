@@ -19,9 +19,6 @@ export default class extends Controller {
       ];
     });
 
-    // let input = document.querySelector(".search_input");
-    // let content_searched = document.querySelector(".searched");
-
     this.search_inputTarget.addEventListener("input", (e) => {
       e.preventDefault();
 
