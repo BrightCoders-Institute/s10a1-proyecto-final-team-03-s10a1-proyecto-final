@@ -1,8 +1,10 @@
-<div class="field" data-controller="search">
-    <label for="search_input">Search a post or user:</label>
-    <input type="text" class="search_input" name="search_input">
-</div>
+<div data-controller="search">
+    <div class="field" >
+        <label for="search_input">Search a post or user:</label>
+        <input type="text" data-search-target="search_input" name="search_input">
+    </div>
 
-<div class="searched">
-    <h3>No users searched</h3>
+    <div data-search-target="searched">
+        <h3>No users searched</h3>
+    </div>
 </div>
