@@ -6,6 +6,7 @@ import ModalController from "./modal_controller";
 import ProfileController from "./profile_controller";
 import ThemeController from "./theme_controller";
 import MainController from "./main_controller";
+import SearchController from "./search_controller";
 import GreenSetController from "./green_set_controller"
 
 application.register("follow", FollowController);
@@ -14,4 +15,5 @@ application.register("modal", ModalController);
 application.register("profile", ProfileController);
 application.register("theme", ThemeController);
 application.register("main", MainController);
+application.register("search", SearchController);
 application.register("green_set", GreenSetController);
