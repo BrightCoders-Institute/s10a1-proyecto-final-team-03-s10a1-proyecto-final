@@ -47,8 +47,6 @@ class UsersController < ApplicationController
   def load_social_actions
     @follow = User.where(id: current_user.id)
     @posts = @user.posts.order(created_at: :desc)
-
-    # Filtramos los "me gusta" del usuario actual para las publicaciones del usuario en cuestión
     @user_likes = current_user.likes.where(post_id: @posts.map(&:id)).index_by(&:post_id)
   end
 
