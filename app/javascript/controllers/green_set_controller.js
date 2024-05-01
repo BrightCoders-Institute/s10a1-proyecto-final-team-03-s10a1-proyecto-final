@@ -1,18 +1,14 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  connect() {
-    const checkboxes = document.querySelectorAll('.setsCheckbox input[type="checkbox"]');
-    const divs = document.querySelectorAll('.serie_content');
+  static targets = ["serie_content", "setsCheckbox"];
 
-    checkboxes.forEach((checkbox, index) => {
-        checkbox.addEventListener('change', function() {
-            if (this.checked) {
-                divs[index].classList.add('green');
-            } else {
-                divs[index].classList.remove('green');
-            }
-        });
+  connect() {
+    this.setsCheckboxTargets.forEach((checkbox, index) => {
+      checkbox.addEventListener("change", (e) => {
+        e.preventDefault();
+        this.serie_contentTarget.classList.toggle("green");
+      });
     });
   }
 }
