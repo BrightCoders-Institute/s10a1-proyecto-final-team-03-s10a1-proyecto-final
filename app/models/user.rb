@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
   has_many :routines
+  has_many :messages
 
   validates :image_profile,
             content_type: { in: %w[image/png image/jpg image/jpeg], message: 'must be an image',
@@ -17,6 +18,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable,
          :confirmable, :omniauthable, omniauth_providers: %i[google_oauth2]
+
+  scope :all_except, ->(user) { where.not(id: user) }
+  after_create_commit { broadcast_append_to 'users_list' }
 
   def self.from_omniauth(access_token)
     data = access_token.info
