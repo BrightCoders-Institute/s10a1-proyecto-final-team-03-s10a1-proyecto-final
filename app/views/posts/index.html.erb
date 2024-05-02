@@ -23,28 +23,28 @@
   <% end %>
 
   <%= render 'main/histories' %>
-
-  <div class="profile-sections" data-controller="profile">
-    <div class="profile-sections__item post active">
+<div data-controller="profile">
+  <div class="profile-sections">
+    <div class="profile-sections__item" data-profile-target="post active">
       <i class="uil uil-th-large"></i>
     </div>
     <span></span>
-    <div class="profile-sections__item video">
+    <div class="profile-sections__item" data-profile-target="video">
       <i class="uil uil-video"></i>
     </div>
     <span></span>
-    <div class="profile-sections__item image_post">
+    <div class="profile-sections__item" data-profile-target="image_post">
       <i class="uil uil-image"></i>
     </div>
   </div>
 
-  <div class="profile-main posts" data-controller="profile">
+  <div class="profile-main" data-profile-target="posts">
     <% @users.each_with_index do |user, idx| %>
       <%= render partial: 'cards', locals: {user: user} if current_user.id == user.id %>
     <% end %>
   </div>
 
-  <div class="profile-main post-images images_post hidden" data-controller="profile">
+  <div class="profile-main post-images hidden" data-profile-target="images_post">
     <% @posts.each do |post| %>
       <% if post.images.attached? %>
         <% post.images.each do |image| %>
@@ -55,4 +55,6 @@
       <% end %>
     <% end %>
   </div>
+</div>
+
 </div>

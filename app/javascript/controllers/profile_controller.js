@@ -1,41 +1,42 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
+  static targets = [
+    "post",
+    "video",
+    "image_post",
+    "posts",
+    "images_post",
+    "active",
+  ];
+
   removeActive() {
-    const profileSections = document.querySelector(".profile-sections");
-    const active = profileSections.querySelector(".active");
-    active.classList.remove("active");
+    this.activeTarget.classList.remove("active");
   }
-  
+
   connect() {
-    let video = document.querySelector(".video");
-    let post = document.querySelector(".post");
-    let image = document.querySelector(".image_post");
-    let posts = document.querySelector(".posts");
-    let images = document.querySelector(".images_post");
-
-    video.addEventListener("click", (e) => {
+    this.videoTarget.addEventListener("click", (e) => {
       e.preventDefault();
       this.removeActive();
-      video.classList.add("active");
-      posts.classList.add("hidden");
-      images.classList.add("hidden");
+      this.videoTarget.classList.add("active");
+      this.postsTarget.classList.add("hidden");
+      this.images_postTarget.classList.add("hidden");
     });
 
-    image.addEventListener("click", (e) => {
+    this.image_postTarget.addEventListener("click", (e) => {
       e.preventDefault();
       this.removeActive();
-      image.classList.add("active");
-      posts.classList.add("hidden");
-      images.classList.remove("hidden");
+      this.image_postTarget.classList.add("active");
+      this.postsTarget.classList.add("hidden");
+      this.images_postTarget.classList.remove("hidden");
     });
 
-    post.addEventListener("click", (e) => {
-      e.preventDefault()
+    this.postTarget.addEventListener("click", (e) => {
+      e.preventDefault();
       this.removeActive();
-      post.classList.add("active");
-      posts.classList.remove("hidden");
-      images.classList.add("hidden");
+      this.postTarget.classList.add("active");
+      this.postsTarget.classList.remove("hidden");
+      this.images_postTarget.classList.add("hidden");
     });
   }
 }
