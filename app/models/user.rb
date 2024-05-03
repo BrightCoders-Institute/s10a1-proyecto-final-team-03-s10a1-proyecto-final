@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
   has_many :routines
+  has_many :stories
 
   validates :image_profile,
             content_type: { in: %w[image/png image/jpg image/jpeg], message: 'must be an image',

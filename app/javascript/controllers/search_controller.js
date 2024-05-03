@@ -37,7 +37,7 @@ export default class extends Controller {
       content
         ? (this.searchedTarget.innerHTML = content.map((element) =>
             element.length > 2
-              ? `<a href=/posts/${element[0]}>${element[1]}`
+              ? `<a href=/posts/${element[0]}>${element[1]}</a>`
               : `<a href=/users/${element[0]}>${element[1]}</a>`
           ))
         : (this.searchedTarget.innerHTML = `<p>User or Post does not exist</p>`);

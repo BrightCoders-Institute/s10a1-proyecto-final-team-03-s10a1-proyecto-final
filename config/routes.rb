@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   resources :images
 
+  resources :stories
+
   resources :routines do
     resources :series do
       resources :exercises

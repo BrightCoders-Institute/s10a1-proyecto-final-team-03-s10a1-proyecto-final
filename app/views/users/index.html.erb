@@ -1,14 +1,4 @@
-<p style="color: green"><%= notice %></p>
-
-<h1>Users</h1>
-
-<div id="users">
-  <% @users.each do |user| %>
-    <%= render user %>
-    <p>
-      <%= link_to "Show this user", user %>
-    </p>
-  <% end %>
+<div data-controller="story_users">
+  <div class="field" data-story_users-target="content_u" >
+  </div>
 </div>
-
-<%= link_to "New user", new_user_path %>
