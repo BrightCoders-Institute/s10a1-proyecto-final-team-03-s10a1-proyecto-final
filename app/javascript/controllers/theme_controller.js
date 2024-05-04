@@ -9,10 +9,13 @@ export default class extends Controller {
     let color = localStorage?.getItem("theme");
     theme.classList.add(color);
 
+    this.changeThemeBtnContent(theme);
+
     this.theme_btnTarget.addEventListener("click", (e) => {
       e.preventDefault();
 
       theme.classList.toggle("theme-dark");
+      this.changeThemeBtnContent(theme);
 
       let theme_color = `${
         theme.classList.contains("theme-dark") ? "theme-dark" : "theme-light"
@@ -24,5 +27,13 @@ export default class extends Controller {
         theme.classList.contains("theme-dark") ? "Dark" : "Light"
       }`;
     });
+  }
+
+  changeThemeBtnContent(element) {    
+    this.theme_btnTarget.innerHTML = `
+      Change to
+      ${element.classList.contains("theme-dark") ? "Light" : "Dark"}
+      theme
+    `;
   }
 }

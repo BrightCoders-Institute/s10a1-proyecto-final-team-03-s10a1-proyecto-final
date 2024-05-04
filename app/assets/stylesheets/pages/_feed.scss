@@ -32,5 +32,34 @@
       border: 1px solid theme('colorInverted');
     }
   }
+}
 
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@include desktop-lg {
+  .container {
+    display: grid;
+    grid-template-areas:
+      "header main"
+      "footer main";
+    grid-template-columns: 18rem auto;
+    grid-template-rows: auto 1fr;
+    justify-content: normal;
+  }
+
+  main {
+    grid-area: main;
+    height: calc(100% - 3rem);
+    padding: 3rem 3rem 0 0;
+  }
 }

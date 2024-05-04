@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :show_themself, only: %i[show]
 
   def index
     @users = User.all
@@ -59,5 +60,10 @@ class UsersController < ApplicationController
   def get_name(user1, user2)
     user = [user1, user2].sort
     "private_#{user[0].id}_#{user[1].id}"
+  end
+
+  def show_themself
+    @user = User.find(params[:id])
+    redirect_to posts_path if current_user.id == @user.id
   end
 end

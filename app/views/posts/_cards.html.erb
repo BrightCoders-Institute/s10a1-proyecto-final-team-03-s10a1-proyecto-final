@@ -9,19 +9,24 @@
             <p><%= post.created_at.strftime("%d-%m-%Y a las %H:%M") %></p>
           </div>
         <% end %>
-        <i class="uil uil-ellipsis-v btn__modal" data-target="openModal-<%= post.id %>"></i>
-        <dialog class="modal" id="modal-<%= post.id %>">
-          <ul class="modal__list">
-            <li class="modal__list-item">
-              <%= link_to 'Edit', edit_post_path(post.id), class: 'btn__actions' %>
-            </li>
-            <li class="modal__list-item btn__actions__turbo-method">
-              <%= button_to "Delete", post_path(post.id),
-                data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
-                method: :delete, class: 'btn__actions__danger' %>
-            </li>
-          </ul>
-        </dialog>
+        <% if post.user_id == current_user.id %>
+          <i class="uil uil-ellipsis-v btn__modal"  data-modal-id-param="<%= post.id %>" data-action="click->modal#openModal" ></i>
+          <dialog class="modal" id="modal-<%= post.id %>" data-modal-id-param="<%= post.id %>" data-action="click->modal#closeModal" data-modal-target="modal">
+            <span class="modal__close" data-modal-id-param="<%= post.id %>" data-action="click->modal#closeModal">
+              &times;
+            </span>
+            <ul class="modal__list">
+              <li class="modal__list-item">
+                <%= link_to 'Edit', edit_post_path(post.id), class: 'btn__actions' %>
+              </li>
+              <li class="modal__list-item btn__actions__turbo-method">
+                <%= button_to "Delete", post_path(post.id),
+                  data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
+                  method: :delete, class: 'btn__actions__danger' %>
+              </li>
+            </ul>
+          </dialog>
+        <% end %>
       </div>
       <%= link_to post_path(post.id) do %>
         <div class="post-body">

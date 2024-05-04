@@ -23,38 +23,37 @@
   <% end %>
 
   <%= render 'main/histories' %>
-<div data-controller="profile">
-  <div class="profile-sections">
-    <div class="profile-sections__item" data-profile-target="post active">
-      <i class="uil uil-th-large"></i>
+  <div data-controller="profile" class="profile-container__main">
+    <div class="profile-sections">
+      <div class="profile-sections__item active" data-profile-target="post">
+        <i class="uil uil-th-large"></i>
+      </div>
+      <span></span>
+      <div class="profile-sections__item" data-profile-target="video">
+        <i class="uil uil-video"></i>
+      </div>
+      <span></span>
+      <div class="profile-sections__item" data-profile-target="image_post">
+        <i class="uil uil-image"></i>
+      </div>
     </div>
-    <span></span>
-    <div class="profile-sections__item" data-profile-target="video">
-      <i class="uil uil-video"></i>
-    </div>
-    <span></span>
-    <div class="profile-sections__item" data-profile-target="image_post">
-      <i class="uil uil-image"></i>
-    </div>
-  </div>
 
-  <div class="profile-main" data-profile-target="posts">
-    <% @users.each_with_index do |user, idx| %>
-      <%= render partial: 'cards', locals: {user: user} if current_user.id == user.id %>
-    <% end %>
-  </div>
+    <div class="profile-main" data-profile-target="posts">
+      <% @users.each_with_index do |user, idx| %>
+        <%= render partial: 'cards', locals: {user: user} if current_user.id == user.id %>
+      <% end %>
+    </div>
 
-  <div class="profile-main post-images hidden" data-profile-target="images_post">
-    <% @posts.each do |post| %>
-      <% if post.images.attached? %>
-        <% post.images.each do |image| %>
-          <div class="profile-main__image">
-            <%= image_tag image %>
-          </div>
+    <div class="profile-main post-images images_post hidden" data-profile-target="images_post">
+      <% @posts.each do |post| %>
+        <% if post.images.attached? %>
+          <% post.images.each do |image| %>
+            <div class="profile-main__image">
+              <%= image_tag image %>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
-</div>
-
 </div>
