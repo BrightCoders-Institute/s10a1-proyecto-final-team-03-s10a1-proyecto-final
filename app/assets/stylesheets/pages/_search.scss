@@ -72,8 +72,13 @@
 
 @include desktop-lg {
   .search-container {
-    .search-header .field label i {
-      padding: 0 1rem;
+    .search-header .field label {
+      font-size: 20px;
+
+      i {
+        font-size: 2rem;
+        padding: 0 1rem;
+      }
     }
   }
 }

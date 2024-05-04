@@ -78,6 +78,11 @@
       }
     }
   }
+
+  &-omniauth form {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 @include legacy-themify {
