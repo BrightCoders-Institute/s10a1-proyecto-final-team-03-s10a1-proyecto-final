@@ -1,0 +1,26 @@
+<div class="excersices-menu">
+    <div class="form">
+        <%= link_to(routines_path) do %> 
+            <h1>
+                <%= image_tag('listicon.svg', class:"excersices-menu-icon") %>
+                ROUTINES
+            </h1>
+        <%end%>
+    </div>
+    <div class="form">
+        <%= link_to(routines_path) do %> 
+            <h1>
+                <%= image_tag('armicon.svg', class:"excersices-menu-icon") %>
+                EXCERSICES
+            </h1>
+        <%end%>
+    </div>
+    <div class="form">
+        <%= link_to(streak_path(id:'show')) do %> 
+            <%= image_tag('fireicon.svg', class:"excersices-menu-icon") %>
+            <h1>
+                STREAKS
+            </h1>
+        <%end%>
+    </div>
+</div>
