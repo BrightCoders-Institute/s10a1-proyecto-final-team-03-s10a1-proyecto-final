@@ -39,6 +39,6 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :selector
+  resources :dumbbellmenu
 end
 
