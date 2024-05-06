@@ -63,7 +63,6 @@ class UsersController < ApplicationController
   end
 
   def show_themself
-    @user = User.find(params[:id])
-    redirect_to posts_path if current_user.id == @user.id
+    redirect_to posts_path if current_user.id == params[:id].to_i
   end
 end
