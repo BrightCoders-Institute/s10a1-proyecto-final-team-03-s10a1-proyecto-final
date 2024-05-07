@@ -28,8 +28,6 @@ export default class extends Controller {
       }
     });
 
-    console.log(cls_stories);
-
     cls_stories.forEach((story, index) => {
       let img = document.createElement("img");
       let body = document.createElement("h1");
