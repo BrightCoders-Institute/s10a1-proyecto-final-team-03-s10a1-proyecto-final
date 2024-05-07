@@ -34,13 +34,14 @@ export default class extends Controller {
 
       const content = [...filteredPost, ...filteredUser];
 
-      content
-        ? (this.searchedTarget.innerHTML = content.map((element) =>
-            element.length > 2
-              ? `<a href=/posts/${element[0]}>${element[1]}</a>`
-              : `<a href=/users/${element[0]}>${element[1]}</a>`
-          ))
-        : (this.searchedTarget.innerHTML = `<p>User or Post does not exist</p>`);
+      if (content) {
+        this.searchedTarget.innerHTML = content.map((element) =>
+          element.length > 2
+            ? `<a href=/posts/${element[0]}>${element[1]}</a>`
+            : `<a href=/users/${element[0]}>${element[1]}</a>`
+        );
+      } else
+        this.searchedTarget.innerHTML = `<p>User or Post does not exist</p>`;
     });
   }
 }

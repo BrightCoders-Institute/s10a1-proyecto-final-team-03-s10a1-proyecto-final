@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :followers, only: %i[create destroy show]
+    member do
+      get 'chat'
+      get 'json'
+    end
   end
 
   resources :streaks, only: %i[show]
@@ -24,6 +28,12 @@ Rails.application.routes.draw do
   end
 
   resources :search
+
+  resources :chats
+
+  resources :rooms do
+    resources :messages
+  end
 
   resources :posts do
     resources :likes, only: %i[create destroy]

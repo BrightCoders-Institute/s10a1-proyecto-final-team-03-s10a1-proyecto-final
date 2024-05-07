@@ -18,7 +18,7 @@ export default class extends Controller {
     });
 
     const cls_stories = stories.map((story) => {
-      return [story[0], story[1], story[2], story[3]];
+      return [...story];
     });
 
     cls_stories.forEach((story, index) => {
@@ -26,14 +26,15 @@ export default class extends Controller {
       let body = document.createElement("h1");
       let day = document.createElement("h3");
 
-      console.log(story);
-
-      if (!this.see_story(story[2])) {
+      if (this.see_story(story[2])) {
         setTimeout(() => {
           this.contentTarget.innerHTML = "";
           body.textContent = story[1];
           day.textContent = story[2];
           img.src = story[3];
+          img.width = 300;
+          img.height = 300;
+          img.alt = "No image";
 
           this.contentTarget.appendChild(body);
           this.contentTarget.appendChild(day);
@@ -45,16 +46,11 @@ export default class extends Controller {
 
   see_story = (date) => {
     let date_now_utc = new Date();
-
     let offset_minutes = date_now_utc.getTimezoneOffset();
-
     let offset_ms = offset_minutes * 60 * 1000;
-
     let date_now_local = new Date(date_now_utc.getTime() - offset_ms);
-
     let filter_date = date_now_local.toISOString().split("T")[0];
 
-    console.log(filter_date > date);
     return filter_date > date;
   };
 }

@@ -1,6 +1,6 @@
 <div class="profile-container">
   <div class="profile-header">
-    <%= link_to users_path do %>
+    <%= link_to edit_user_path(@user.id) do %>
       <div class="profile-header__avatar">
         <%= @user.image_profile.attached? ? image_tag(@user.image_profile) : image_tag('avatar-default.webp') %>
       </div>

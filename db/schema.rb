@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_04_30_224435) do
+ActiveRecord::Schema[7.1].define(version: 2024_04_30_230759) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -94,11 +94,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_224435) do
   create_table "messages", force: :cascade do |t|
     t.text "body"
     t.bigint "user_id", null: false
-    t.bigint "message_parent_id", null: false
+    t.bigint "room_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["message_parent_id"], name: "index_messages_on_message_parent_id"
+    t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
+  end
+
+  create_table "participants", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "room_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["room_id"], name: "index_participants_on_room_id"
+    t.index ["user_id"], name: "index_participants_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -109,6 +118,13 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_224435) do
     t.datetime "updated_at", null: false
     t.integer "likes_count", default: 0
     t.index ["user_id"], name: "index_posts_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "name"
+    t.boolean "is_private", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "routines", force: :cascade do |t|
@@ -176,18 +192,20 @@ ActiveRecord::Schema[7.1].define(version: 2024_04_30_224435) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "comments", "comments", column: "parent_comment_id"
-  add_foreign_key "comments", "posts"
-  add_foreign_key "comments", "users"
+  add_foreign_key "comments", "posts", on_delete: :cascade
+  add_foreign_key "comments", "users", on_delete: :cascade
   add_foreign_key "exercises", "series", on_delete: :cascade
-  add_foreign_key "followers", "users"
   add_foreign_key "followers", "users", column: "follower_user_id"
-  add_foreign_key "likes", "posts"
-  add_foreign_key "likes", "users"
-  add_foreign_key "messages", "messages", column: "message_parent_id"
-  add_foreign_key "messages", "users"
-  add_foreign_key "posts", "users"
-  add_foreign_key "routines", "users"
+  add_foreign_key "followers", "users", on_delete: :cascade
+  add_foreign_key "likes", "posts", on_delete: :cascade
+  add_foreign_key "likes", "users", on_delete: :cascade
+  add_foreign_key "messages", "rooms", on_delete: :cascade
+  add_foreign_key "messages", "users", on_delete: :cascade
+  add_foreign_key "participants", "rooms"
+  add_foreign_key "participants", "users"
+  add_foreign_key "posts", "users", on_delete: :cascade
+  add_foreign_key "routines", "users", on_delete: :cascade
   add_foreign_key "series", "routines", on_delete: :cascade
   add_foreign_key "stories", "users"
-  add_foreign_key "streaks", "users"
+  add_foreign_key "streaks", "users", on_delete: :cascade
 end
