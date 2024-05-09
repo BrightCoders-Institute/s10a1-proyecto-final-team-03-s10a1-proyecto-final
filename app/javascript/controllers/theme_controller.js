@@ -1,14 +1,15 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
+  static targets = ["theme_btn"];
+
   connect() {
     let theme = document.querySelector(".theme-light");
-    let btn_theme = document.querySelector(".theme_btn");
 
     let color = localStorage?.getItem("theme");
     theme.classList.add(color);
 
-    btn_theme.addEventListener("click", (e) => {
+    this.theme_btnTarget.addEventListener("click", (e) => {
       e.preventDefault();
 
       theme.classList.toggle("theme-dark");
@@ -19,7 +20,7 @@ export default class extends Controller {
 
       localStorage.setItem("theme", `${theme_color}`);
 
-      btn_theme.value = `${
+      this.theme_btnTarget.value = `${
         theme.classList.contains("theme-dark") ? "Dark" : "Light"
       }`;
     });

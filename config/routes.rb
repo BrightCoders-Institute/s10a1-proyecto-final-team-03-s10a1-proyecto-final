@@ -9,14 +9,30 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :followers, only: %i[create destroy show]
+    member do
+      get 'chat'
+      get 'json'
+    end
   end
 
+  resources :streaks, only: %i[show]
+
   resources :images
+
+  resources :stories
 
   resources :routines do
     resources :series do
       resources :exercises
     end
+  end
+
+  resources :search
+
+  resources :chats
+
+  resources :rooms do
+    resources :messages
   end
 
   resources :posts do
@@ -25,4 +41,7 @@ Rails.application.routes.draw do
       post 'reply', on: :collection
     end
   end
+  
+  resources :dumbbellmenu
 end
+

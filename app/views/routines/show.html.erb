@@ -1,19 +1,22 @@
-<h1><%= @routine.exercise %></h1>
-<% if @series.any? %>
-  <% @series.each do |serie| %> 
-    <%= render 'series/series', series: serie %>
-    <% if serie.exercises.any? %>
-      <% serie.exercises.each do |exercise| %>
-        <%= render 'exercises/exercises', exercise: exercise, serie: serie %> 
+<h1 class="tittle_routine"><%= @routine.exercise %></h1>
+<div class="series_container">
+  <% if @series.any? %>
+    <% @series.each do |serie| %> 
+      <%= render 'series/series', series: serie %>
+      <% if serie.exercises.any? %>
+        <% serie.exercises.each do |exercise| %>
+          <%= render 'exercises/exercises', exercise: exercise, serie: serie %> 
+        <% end %>
+      <% else %>
+        <p>You don't have any exercise D:</p>
       <% end %>
-    <% else %>
-      <p>You don't have any exercise D:</p>
-    <% end %>
-    <div>
-      <%= link_to 'Add exercise', new_routine_series_exercise_path(@routine, serie), class: 'btn__actions btn__extra btn__actions__info' %>
-    </div> 
-  <% end %> 
-<% else %>
-  <p>No series were found.</p>
-<% end %>
-<%= link_to 'Add serie', new_routine_series_path(@routine), class: 'btn__actions btn__extra btn__actions__info' %>
+      <div>
+        <%= link_to 'Add serie', new_routine_series_exercise_path(@routine, serie), class: 'btn__actions btn__extra btn__actions__info btn_add_serie' %>
+      </div> 
+    <% end %> 
+  <% else %>
+    <p>No series were found.</p>
+  <% end %>
+</div>
+
+<%= link_to 'Add exercise', new_routine_series_path(@routine), class: 'btn__actions btn__extra btn__actions__info btn_add_serie' %>

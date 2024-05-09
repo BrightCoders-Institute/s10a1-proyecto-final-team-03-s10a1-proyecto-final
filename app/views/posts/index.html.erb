@@ -2,11 +2,16 @@
   <% @users.each_with_index do |user, idx| %>
     <% if current_user.id == user.id %>
       <div class="profile-header">
-        <div class="profile-header__avatar">
-          <%= user.image_profile.attached? ? image_tag(user.image_profile) : image_tag('avatar-default.webp') %>
-        </div>
+        <%= link_to stories_path do %>
+          <div class="profile-header__avatar">
+            <%= user.image_profile.attached? ? image_tag(user.image_profile) : image_tag('avatar-default.webp') %>
+          </div>
+        <% end %>
         <div class="profile-header__info">
           <h2><%= user.name %></h2>
+          <%= link_to new_story_path do %>
+            <h3>New story</h3>
+          <% end %>
           <div class="stats">
             <div class="stats__item">
               <p><%= user.followers_count %></p>
@@ -22,37 +27,35 @@
     <% end %>
   <% end %>
 
-  <%= render 'main/histories' %>
-
-  <div class="profile-sections" data-controller="profile">
-    <div class="profile-sections__item post active">
-      <i class="uil uil-th-large"></i>
+  <div data-controller="profile">
+    <div class="profile-sections">
+      <div class="profile-sections__item" data-profile-target="post active">
+        <i class="uil uil-th-large"></i>
+      </div>
+      <div class="profile-sections__item" data-profile-target="video">
+        <i class="uil uil-video"></i>
+      </div>
+      <div class="profile-sections__item" data-profile-target="image_post">
+        <i class="uil uil-image"></i>
+      </div>
     </div>
-    <span></span>
-    <div class="profile-sections__item video">
-      <i class="uil uil-video"></i>
-    </div>
-    <span></span>
-    <div class="profile-sections__item image_post">
-      <i class="uil uil-image"></i>
-    </div>
-  </div>
 
-  <div class="profile-main posts" data-controller="profile">
-    <% @users.each_with_index do |user, idx| %>
-      <%= render partial: 'cards', locals: {user: user} if current_user.id == user.id %>
-    <% end %>
-  </div>
+    <div class="profile-main" data-profile-target="posts">
+      <% @users.each_with_index do |user, idx| %>
+        <%= render partial: 'cards', locals: {user: user} if current_user.id == user.id %>
+      <% end %>
+    </div>
 
-  <div class="profile-main post-images images_post hidden" data-controller="profile">
-    <% @posts.each do |post| %>
-      <% if post.images.attached? %>
-        <% post.images.each do |image| %>
-          <div class="profile-main__image">
-            <%= image_tag image %>
-          </div>
+    <div class="profile-main post-images hidden" data-profile-target="images_post">
+      <% @posts.each do |post| %>
+        <% if post.images.attached? %>
+          <% post.images.each do |image| %>
+            <div class="profile-main__image">
+              <%= image_tag image %>
+            </div>
+          <% end %>
         <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>

@@ -1,0 +1,8 @@
+<h1>My Streaks</h1>
+
+<% if @streak %>
+  <h2>Current streaks <%= @streak.current_streak %> days</h2>
+  <div><%= image_tag('onfire.gif') %></div>
+  
+  <h2>Longest streaks <%= @streak.longest_streak %> days</h2>
+<% end %>

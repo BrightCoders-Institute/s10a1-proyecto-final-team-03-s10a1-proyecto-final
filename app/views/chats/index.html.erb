@@ -1,0 +1,22 @@
+<div id="chatroom_container">
+  <div id="side_panel" style="display:grid;">
+    <h3> <%= "#{current_user.name}" %>'s Chatroom </h3>
+    <h2> Users </h2>
+    <%= turbo_stream_from 'users_list' %>
+    <div id='users' style="display:grid;">
+      <%= render @users %>
+    </div>
+  </div>
+  <div id="room_container"> 
+    <% if @single_room %>
+      <div id="single_room" style="display:grid;">
+        <h4 class="text-center"> <%= @user&.name || @single_room.name %> </h4>
+        <%= turbo_stream_from @single_room %>
+        <div id="messages" style="display:grid;">
+          <%= render @messages %>
+        </div>
+        <%= render 'layouts/new_message_form' %>
+      </div>
+    <% end %>
+  </div>
+</div>
