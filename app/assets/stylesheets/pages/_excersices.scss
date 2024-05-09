@@ -1,0 +1,22 @@
+.excersices-menu {
+    flex-direction: column;
+    height: 100%;
+  
+    .form {
+        gap: 2.5rem;
+        height: 90%;
+        justify-content: center;
+        text-align: center;
+    }
+
+    h2 {
+        font-family: $font-metal;
+        font-weight: normal
+    }
+}
+
+.excersices-menu-icon {
+    height: 50px;
+    margin: auto;
+    width: 50px;
+}

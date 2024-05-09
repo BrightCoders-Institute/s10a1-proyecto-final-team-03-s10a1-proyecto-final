@@ -41,4 +41,7 @@ Rails.application.routes.draw do
       post 'reply', on: :collection
     end
   end
+  
+  resources :dumbbellmenu
 end
+
