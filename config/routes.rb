@@ -11,12 +11,15 @@ Rails.application.routes.draw do
     resources :followers, only: %i[create destroy show]
     member do
       get 'chat'
+      get 'json'
     end
   end
 
   resources :streaks, only: %i[show]
 
   resources :images
+
+  resources :stories
 
   resources :routines do
     resources :series do

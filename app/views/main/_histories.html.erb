@@ -1,7 +1,9 @@
 <div class="histories">
-  <% (10).times do %>
+  <% @users.each do |user| %>
     <div class="history">
-      <%= image_tag('avatar-default.webp') %>
+      <%= link_to (current_user == user ? stories_path : edit_user_path(user.id)) do %>
+        <%= image_tag(user.image_profile.attached? ? user.image_profile : "avatar-default.webp", style: "width: 50px; height: 50px;") %>
+      <% end %>
     </div>
   <% end %>
 </div>
