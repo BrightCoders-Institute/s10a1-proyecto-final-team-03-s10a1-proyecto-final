@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_user
 
   def index
   end
 
   def show
-    @user = User.find(params[:id])
-    @follow = User.where(id: current_user.id)
-    @posts = @user.posts.order(created_at: :desc)
-    @user_likes = @user.likes.where(post_id: @posts.pluck(:id)).index_by(&:post_id)
     load_users
     load_social_actions
   end
@@ -43,7 +40,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
   end
 
   def create
