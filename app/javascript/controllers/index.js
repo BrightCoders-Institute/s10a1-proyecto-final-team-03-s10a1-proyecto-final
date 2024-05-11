@@ -8,10 +8,16 @@ import PreviewController from "./preview_controller";
 import ProfileController from "./profile_controller";
 import ResetFormController from "./reset_form_controller";
 import SearchController from "./search_controller";
+import StorieController from "./storie_controller";
+import StoryController from "./story_controller";
+import StoryUsersController from "./story_users_controller";
 import ThemeController from "./theme_controller";
 
 application.register("follow", FollowController);
 application.register("green_set", GreenSetController);
+application.register("storie", StorieController);
+application.register("story", StoryController);
+application.register("story_users", StoryUsersController);
 application.register("main", MainController);
 application.register("modal", ModalController);
 application.register("preview", PreviewController);

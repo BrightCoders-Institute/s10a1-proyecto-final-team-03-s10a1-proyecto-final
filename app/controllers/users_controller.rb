@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   before_action :authenticate_user!
   before_action :show_themself, only: %i[show]
+  before_action :set_user
 
   def index
-    @users = User.all
   end
 
   def show
@@ -22,7 +22,26 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def edit; end
+  def json
+    @users = User.all
+
+    stories_json = @users.flat_map do |user|
+      user.stories.order(created_at: :desc).map do |story|
+        {
+          user_id: user.id,
+          id: story.id,
+          name: story.body,
+          day: story.day,
+          images: story.images.attached? ? rails_blob_path(story.images.first, only_path: true) : nil
+        }
+      end
+    end
+
+    render json: { stories: stories_json }
+  end
+
+  def edit
+  end
 
   def create
     @user = User.new(user_params)
@@ -35,6 +54,10 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     params.require(:user).permit(:name, :lastName, :birthday, :weight, :height, :email, :image_profile)

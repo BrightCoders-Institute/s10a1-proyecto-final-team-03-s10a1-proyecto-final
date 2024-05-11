@@ -2,11 +2,16 @@
   <% @users.each_with_index do |user, idx| %>
     <% if current_user.id == user.id %>
       <div class="profile-header">
-        <div class="profile-header__avatar">
-          <%= user.image_profile.attached? ? image_tag(user.image_profile) : image_tag('avatar-default.webp') %>
-        </div>
+        <%= link_to stories_path do %>
+          <div class="profile-header__avatar">
+            <%= user.image_profile.attached? ? image_tag(user.image_profile) : image_tag('avatar-default.webp') %>
+          </div>
+        <% end %>
         <div class="profile-header__info">
           <h2><%= user.name %></h2>
+          <%= link_to new_story_path do %>
+            <h3>New story</h3>
+          <% end %>
           <div class="stats">
             <div class="stats__item">
               <p><%= user.followers_count %></p>
@@ -22,17 +27,14 @@
     <% end %>
   <% end %>
 
-  <%= render 'main/histories' %>
   <div data-controller="profile" class="profile-container__main">
     <div class="profile-sections">
       <div class="profile-sections__item active" data-profile-target="post">
         <i class="uil uil-th-large"></i>
       </div>
-      <span></span>
       <div class="profile-sections__item" data-profile-target="video">
         <i class="uil uil-video"></i>
       </div>
-      <span></span>
       <div class="profile-sections__item" data-profile-target="image_post">
         <i class="uil uil-image"></i>
       </div>

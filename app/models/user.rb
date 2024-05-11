@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
   has_many :routines
+  has_many :stories
   has_many :messages
 
   validates :image_profile,
