@@ -1,10 +1,15 @@
-<div data-controller="search">
-    <div class="field" >
-        <label for="search_input">Search a post or user:</label>
-        <input type="text" data-search-target="search_input" name="search_input">
+<div data-controller="search" class="search-container">
+  <div class="search-header">
+    <div class="field">
+      <label for="search_input">
+        <i class="uil uil-search"></i>
+        Search posts or users:
+      </label>
+      <input type="text" data-search-target="search_input" name="search_input">
     </div>
+  </div>
 
-    <div data-search-target="searched">
-        <h3>No users searched</h3>
-    </div>
+  <div data-search-target="searched" class="search-container__main">
+    <h3>No users searched</h3>
+  </div>
 </div>

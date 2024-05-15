@@ -28,10 +28,10 @@ class PostsController < ApplicationController
   end
 
   def edit
-    unless current_user == @post.user
-      redirect_to root_path, alert: 'You are not authorized to edit this post.',
-                             status: :unauthorized
-    end
+    return if current_user.id == @post.user_id
+
+    flash[:alert] = 'You are not authorized to edit this post.'
+    redirect_to root_path
   end
 
   def show; end

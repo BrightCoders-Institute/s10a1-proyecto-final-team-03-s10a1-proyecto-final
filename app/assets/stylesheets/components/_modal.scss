@@ -3,7 +3,7 @@
   border: none;
   box-shadow: 0 0 10px 0 rgba(0,0,0,0.2), 0 5px 10px 0 rgba(0,0,0,0.19);
   overflow: auto;
-  padding: 1rem;
+  padding: 2rem;
   position: fixed;
   width: 50%;
   z-index: 101;
@@ -20,12 +20,13 @@
 
       & button, & a {
         background: none;
-        border-radius: 0;
         border-radius: 5px;
         border: none;
         font-size: 20px;
         margin: 0;
         padding: 0 4px;
+        text-align: center;
+        width: 100%;
 
         &:focus-visible {
           outline: none;
@@ -50,6 +51,21 @@
   &:focus-visible {
     outline: none;
   }
+
+  &__close {
+    background: none;
+    border: none;
+    font-size: 20px;
+    padding: 4px 1rem 0 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+
+    &:hover {
+      color: $danger-bg;
+      cursor: pointer;
+    }
+  }
 }
 
 @include legacy-themify {
@@ -66,6 +82,24 @@
           background-color: darken(theme('backgroundColor-main'), 10%);
         }
       }
+    }
+  }
+}
+
+@include desktop-lg {
+  .modal {
+    &__list-item {
+      & button, & a {
+        font-size: 1.5rem;
+      }
+    }
+  
+    .btn__actions__turbo-method:last-child button {
+      font-size: 1.5rem;
+    }
+
+    &__close {
+      font-size: 1.5rem;
     }
   }
 }

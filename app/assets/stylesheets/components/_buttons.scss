@@ -118,6 +118,17 @@
       }
     }
 
+    &-omniauth button {
+      align-items: center;
+      display: flex;
+      padding: 4px 8px;
+      
+      i {
+        font-size: 20px;
+        padding: 0 8px;
+      }
+    }
+
     .unfollow, .follow {
       font-size: 1rem;
       padding: 4px 8px;
@@ -152,6 +163,36 @@
       &__info button, &__danger button,
       &__info input, &__danger input {
         color: $white;
+      }
+
+      &-theme button {
+        background-color: theme('colorInverted');
+        color: theme('color');
+      }
+    }
+  }
+}
+
+@include desktop-lg {
+  .btn {
+    &__extra {
+      font-size: 1.5rem;
+      padding-bottom: 4px;
+      padding-top: 4px;
+    }
+    
+    &__actions {
+      input, button,
+      &__danger button {
+        font-size: 1.5rem;
+      }
+    
+      &__devise-links a {
+        font-size: 1.25rem;
+      }
+  
+      .unfollow, .follow {
+        font-size: 1.25rem;
       }
     }
   }

@@ -1,6 +1,11 @@
 <%- if devise_mapping.omniauthable? && controller_name == 'sessions' %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false }, class:"btn2" %>
+    <div class="btn__actions btn__actions-omniauth">
+      <%= button_to omniauth_authorize_path(resource_name, provider), data: { turbo: false }  do %>
+        <i class="<%= "uil uil-google" if OmniAuth::Utils.camelize(provider) == "GoogleOauth2" %>"></i>
+        <%= OmniAuth::Utils.camelize(provider) %>
+      <% end %>
+    </div>
   <% end %>
 <% end %>
 

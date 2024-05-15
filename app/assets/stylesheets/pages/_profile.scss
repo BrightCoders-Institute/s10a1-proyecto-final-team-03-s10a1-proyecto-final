@@ -1,10 +1,10 @@
 .profile-container {
   flex-direction: column;
   height: 100%;
-  overflow: auto;
-  
-  &::-webkit-scrollbar {
-    display: none;
+
+  &__main {
+    flex-direction: column;
+    height: 100%;
   }
 }
 
@@ -33,7 +33,7 @@
 
   &__info {
     flex-direction: column;
-    padding: 0 8px;
+    width: 100%;
 
     h2 {
       font-size: 1rem;
@@ -53,7 +53,7 @@
   }
 
   &__actions {
-    margin: 0 auto;
+    padding: 1rem;
   }
 
   .histories {
@@ -137,8 +137,18 @@
       margin-bottom: 1rem;
     }
   }
+}
 
-  &.posts {
-    overflow: visible;
+@include desktop-lg {
+  .profile-header {
+    &__info {
+      h2 {
+        font-size: 2rem;
+      }
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
   }
 }
