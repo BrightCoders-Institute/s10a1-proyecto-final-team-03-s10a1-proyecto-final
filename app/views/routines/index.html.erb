@@ -5,8 +5,11 @@
       <% @routines.each do |routine| %>
         <div class="routine btn__extra">
           <%= link_to truncate(routine.exercise, length: 23), routine_path(routine.id) %>
-          <i class="uil uil-ellipsis-v btn__modal" data-target="openModal-<%= routine.id %>"></i>
-          <dialog class="modal" id="modal-<%= routine.id %>">
+          <i class="uil uil-ellipsis-v btn__modal" data-modal-id-param="<%= routine.id %>" data-action="click->modal#openModal" ></i>
+          <dialog class="modal" id="modal-<%= routine.id %>" data-modal-id-param="<%= routine.id %>" data-action="click->modal#closeModal" data-modal-target="modal">
+            <span class="modal__close" data-modal-id-param="<%= routine.id %>" data-action="click->modal#closeModal">
+              &times;
+            </span>
             <ul class="modal__list">
               <li class="modal__list-item">
                 <%= link_to 'Edit', edit_routine_path(routine.id), class: 'btn__actions' %>

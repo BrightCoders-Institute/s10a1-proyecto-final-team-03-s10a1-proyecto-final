@@ -35,8 +35,9 @@
       <% elsif alert %>
         <p class="alert"><%= alert %></p>
       <% end %>
-      
-      <%= yield %>
+      <main>
+        <%= yield %>
+      </main>
 
       <%= render 'layouts/footer' if user_signed_in?%>
     </div>

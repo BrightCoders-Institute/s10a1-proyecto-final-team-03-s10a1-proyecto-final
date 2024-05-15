@@ -1,20 +1,12 @@
 .container footer {
   padding: 1rem;
 
-  @include themify {
-    background-color: theme('colorInverted');
-  }
-
   a {
     display: flex;
     margin: auto;
 
     i {
       font-size: 2.5rem;
-
-      @include themify {
-        color: theme('color');
-      }
     }
   }
 
@@ -23,11 +15,72 @@
       border-radius: 50%;
       height: $avatar-size;
       width: $avatar-size;
+    }
+  }
+}
+
+@include desktop-lg {
+  .container footer {
+    background: transparent;
+    flex-direction: column;
+    grid-area: footer;
+    padding: 0;
+
+    a {
+      align-items: center;
+      margin: 0;
+      padding: 1rem;
       
-      @include themify {
-        border: 1px solid theme('color');
+      &.home::after {
+        content: "Home";
+      }
+  
+      &.search::after {
+        content: "Search";
+      }
+  
+      &.new-post::after {
+        content: "Post";
+      }
+  
+      &.my-routines::after {
+        content: "Routine";
+      }
+  
+      &.current-user::after {
+        content: "Profile";
+      }
+
+      &::after {
+        font-size: 1.5rem;
+        margin-left: 1rem;
+      }
+
+      i {
+        width: 50px;
+      }
+    }
+  }
+}
+
+@include legacy-themify {
+  .container footer {
+    a {
+      i, &::after {
+        color: theme('colorInverted');
+      }
+
+      &:hover {
+        background-color: theme('colorInverted');
+
+        i, &::after {
+          color: theme('color');
+        }
       }
     }
 
+    .current-user img {
+      border: 1px solid theme('color');
+    }
   }
 }

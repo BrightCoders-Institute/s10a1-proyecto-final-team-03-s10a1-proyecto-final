@@ -1,11 +1,6 @@
 .posts {
   flex-direction: column;
   margin: 1rem 1rem auto;
-  overflow: auto;
-
-  &::-webkit-scrollbar {
-    display: none;
-  }
 }
 
 .post:not(.profile-sections__item) {
