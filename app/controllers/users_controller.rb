@@ -70,6 +70,7 @@ class UsersController < ApplicationController
 
   def load_social_actions
     @follow = User.where(id: current_user.id)
+    @follow_user = Follower.find_by(user_id: current_user.id, follower_user_id: @user.id)
     @posts = @user.posts.order(created_at: :desc)
     @user_likes = current_user.likes.where(post_id: @posts.map(&:id)).index_by(&:post_id)
   end

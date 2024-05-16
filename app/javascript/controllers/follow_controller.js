@@ -4,19 +4,14 @@ export default class extends Controller {
   static targets = ["follow", "unfollow"];
 
   connect() {
-    this.unfollowTarget.classList.add("hidden");
 
     this.followTarget.addEventListener("click", (e) => {
       e.preventDefault();
-      this.followTarget.classList.toggle("hidden");
-      this.unfollowTarget.classList.toggle("hidden");
       this.toggleFollow(".form-u", true);
     });
 
     this.unfollowTarget.addEventListener("click", (e) => {
       e.preventDefault();
-      this.unfollowTarget.classList.toggle("hidden");
-      this.followTarget.classList.toggle("hidden");
       this.toggleFollow(".form-f", true);
     });
   }

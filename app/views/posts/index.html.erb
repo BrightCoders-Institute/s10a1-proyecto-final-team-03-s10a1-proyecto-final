@@ -8,9 +8,9 @@
           </div>
         <% end %>
         <div class="profile-header__info">
-          <h2><%= user.name %></h2>
+          <h3><%= user.name %> <%= user.lastName %></h3>
           <%= link_to new_story_path do %>
-            <h3>New story</h3>
+            <h2>New story</h2>
           <% end %>
           <div class="stats">
             <div class="stats__item">
